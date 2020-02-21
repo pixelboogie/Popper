@@ -1,0 +1,11 @@
+*.meta
+*.tmp
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.pidb.meta
+sysinfo.txt
+*.apk
+*.unitypackage
