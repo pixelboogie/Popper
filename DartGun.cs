@@ -6,7 +6,9 @@ public class DartGun : MonoBehaviour {
       public Transform barrelLocation;
       public int tester;
       public float shotPower = 180000;
-      public int roundsCount = 3;
+      public int roundsCount = 3; // rounds on hand to use
+
+      
 
       void Update () {
             //Check if player is pulling the trigger
