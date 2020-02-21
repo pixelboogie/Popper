@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using TMPro;
 
-public class DartGun : MonoBehaviour
+
+public class Blaster : MonoBehaviour
 {
 
       public GameObject dartPrefab;
       public Transform barrelLocation;
-      public float shotPower = 180000;
+      public float shotPower = 280000;
       public int roundsCount = 3; // rounds on hand to use
 
       public TextMeshPro ammoText;

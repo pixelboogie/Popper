@@ -14,6 +14,10 @@ public class DisplayText : MonoBehaviour
       private int levelIndex;
       public int maxBalloons = 3;
 
+
+
+
+
     // Update is called once per frame
     void Update()
     {
