@@ -4,6 +4,7 @@ using UnityEngine;
 public class Ballon : MonoBehaviour
 {
     public GameObject popSound; 
+    public GameObject dieSound; 
     public GameObject ballonCountDisplay;
     public GameObject[] wayPoints; 
     public GameObject[] wayPoints2;
@@ -30,6 +31,7 @@ public class Ballon : MonoBehaviour
         m_Material = GetComponent<Renderer>().material;
         //Get sound component
         popSound = GameObject.FindGameObjectWithTag("PopSound");
+                dieSound = GameObject.FindGameObjectWithTag("DieSound");
         //Get ballonCountDisplay
         ballonCountDisplay = GameObject.FindGameObjectWithTag("BallonCountDisplay");
     }
@@ -93,6 +95,8 @@ public class Ballon : MonoBehaviour
         //Ballon at Finish
         if (nextWayPointIndex == lastWayPointIndex && Vector3.Distance(transform.position, lastWayPoint) < 0.5f)
         {
+
+            dieSound.GetComponent<DieSound>().PlayDie();
             ballonCountDisplay.GetComponent<DisplayText>().LivesDecrease();
             Destroy(this.gameObject);
 
