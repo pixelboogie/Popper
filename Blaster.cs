@@ -14,6 +14,12 @@ public class Blaster : MonoBehaviour
 
       public TextMeshPro ammoText;
 
+
+      public AudioSource source;
+      public AudioClip shot;
+
+
+
       void Update()
       {
             //Check if player is pulling the trigger
@@ -41,9 +47,7 @@ public class Blaster : MonoBehaviour
             if (roundsCount >= 1)
             {
 
-                  roundsCount--;
-
-
+                  source.PlayOneShot(shot);
 
                   var dart = Instantiate(dartPrefab, barrelLocation.position, barrelLocation.transform.rotation);
                   //     var dart =  Instantiate(dartPrefab, barrelLocation.position, testVector);
@@ -60,9 +64,9 @@ public class Blaster : MonoBehaviour
 
                   //      dart.transform.eulerAngles = new Vector3(-90, 0, 90);
 
+                  roundsCount--;
 
-
-                  ammoText.text = "Ammo: " + roundsCount.ToString();
+                  updateAmmoText();
 
 
                   //Destroy the dart after X seconds.
@@ -74,8 +78,13 @@ public class Blaster : MonoBehaviour
 
       void Reload()
       {
-
             roundsCount = 3;
+            updateAmmoText();
+      }
+      public void updateAmmoText()
+      {
             ammoText.text = "Ammo: " + roundsCount.ToString();
       }
+
+
 }
