@@ -7,7 +7,9 @@ public class DartGun : MonoBehaviour
       public GameObject dartPrefab;
       public Transform barrelLocation;
       public float shotPower = 180000;
-      public int roundsCount = 3; // rounds on hand to use
+      public int roundsCount = 10; // rounds on hand to use
+      public int maxRounds = 10;
+
 
       public TextMeshPro ammoText;
 
@@ -72,7 +74,7 @@ public class DartGun : MonoBehaviour
       void Reload()
       {
 
-            roundsCount = 3;
+            roundsCount = maxRounds;
             ammoText.text = "Ammo: " + roundsCount.ToString();
       }
 }
