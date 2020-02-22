@@ -7,17 +7,6 @@ public class DieSound : MonoBehaviour
       public AudioSource source;
       public AudioClip die;
 
-      void Start()
-      {
-
-      }
-
-      // Update is called once per frame
-      void Update()
-      {
-
-      }
-
 
 
 

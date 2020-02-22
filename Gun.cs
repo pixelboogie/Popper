@@ -4,15 +4,13 @@ using UnityEngine;
 using TMPro;
 
 
-public class Blaster : MonoBehaviour
+public class Gun : MonoBehaviour
 {
 
       public GameObject dartPrefab;
       public Transform barrelLocation;
-      public float shotPower = 700000;
+      public float shotPower = 280000;
       public int roundsCount = 10; // rounds on hand to use
-      public int maxRounds = 10;
-
 
       public TextMeshPro ammoText;
 
@@ -80,7 +78,7 @@ public class Blaster : MonoBehaviour
 
       void Reload()
       {
-            roundsCount = maxRounds;
+            roundsCount = 10;
             updateAmmoText();
       }
       public void updateAmmoText()

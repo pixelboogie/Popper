@@ -52,7 +52,9 @@ public class HappyFace : MonoBehaviour
                   //  Blaster.GetComponent.<Blaster>.roundsCount = 10;
                   //  Blaster.roundsCount = 10;
             //     ammoText.text = "Ammo: " + 10000.ToString();
-             referenceScript.roundsCount = 10;
+            //  referenceScript.roundsCount = 10;
+                referenceScript.maxRounds = 20; // extend mag capacity
+                referenceScript.roundsCount = 20;  // and reload the gun
                 referenceScript.updateAmmoText();
              Destroy(this.gameObject);
         }
