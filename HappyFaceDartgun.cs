@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class HappyFace : MonoBehaviour
+public class HappyFaceDartgun : MonoBehaviour
 {
-
 
     public TextMeshPro ammoText;
 //     public GameObject Blaster;
@@ -17,7 +16,7 @@ public class HappyFace : MonoBehaviour
 
 
       GameObject referenceObject;
-      Blaster referenceScript;
+      DartGun referenceScript;
 
 
 
@@ -25,7 +24,7 @@ public class HappyFace : MonoBehaviour
     {
         
           referenceObject = GameObject.FindWithTag("ObjectOne");
-          referenceScript = referenceObject.GetComponent<Blaster>();
+          referenceScript = referenceObject.GetComponent<DartGun>();
 
 
     }
@@ -56,7 +55,7 @@ public class HappyFace : MonoBehaviour
                 referenceScript.magCapacity = 20; // extend mag capacity
                 referenceScript.loadedRounds = 20;  // and reload the gun
                 referenceScript.updateAmmoText();
-             Destroy(this.gameObject);
+                  Destroy(this.gameObject);
         }
     }
 }

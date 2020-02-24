@@ -68,9 +68,13 @@ public class Ballon : MonoBehaviour
             health--;
             ballonCountDisplay.GetComponent<DisplayText>().BallonPopIncrease();
             popSound.GetComponent<PopSound>().PlayPop();
+
+             Score.myScore++;
+
             if (health <= 0)
             {
                 Destroy(this.gameObject);
+
             }
            
         }

@@ -10,8 +10,9 @@ public class Blaster : MonoBehaviour
       public GameObject dartPrefab;
       public Transform barrelLocation;
       public float shotPower = 700000;
-      public int roundsCount = 10; // rounds on hand to use
-      public int maxRounds = 10;
+
+      public int loadedRounds = 10; // rounds on hand to use
+      public int magCapacity = 10;
 
 
       public TextMeshPro ammoText;
@@ -19,7 +20,8 @@ public class Blaster : MonoBehaviour
 
       public AudioSource source;
       public AudioClip shot;
-
+      public AudioClip click;
+ public AudioClip reloadSound;
 
 
       void Update()
@@ -30,7 +32,9 @@ public class Blaster : MonoBehaviour
                   Shoot();
             }
 
-            if (OVRInput.GetDown(OVRInput.Button.One))
+            // if (OVRInput.GetDown(OVRInput.Button.One))
+                        if ((OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > .8) && (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > .8))
+
             {
                   Reload();
             }
@@ -46,7 +50,7 @@ public class Blaster : MonoBehaviour
 
 
 
-            if (roundsCount >= 1)
+            if (loadedRounds >= 1)
             {
 
                   source.PlayOneShot(shot);
@@ -66,7 +70,7 @@ public class Blaster : MonoBehaviour
 
                   //      dart.transform.eulerAngles = new Vector3(-90, 0, 90);
 
-                  roundsCount--;
+                  loadedRounds--;
 
                   updateAmmoText();
 
@@ -76,17 +80,19 @@ public class Blaster : MonoBehaviour
             }
       }
 
-
-
       void Reload()
       {
-            roundsCount = maxRounds;
-            updateAmmoText();
+                     source.PlayOneShot(reloadSound);
+            loadedRounds = magCapacity;
+                        updateAmmoText();
       }
+
+      
       public void updateAmmoText()
       {
-            ammoText.text = "Ammo: " + roundsCount.ToString();
+            ammoText.text = "Ammo: " + loadedRounds.ToString();
       }
+
 
 
 }
