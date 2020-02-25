@@ -21,12 +21,13 @@ public class DisplayText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ballonsText.text = "Ballons Popped: " + ballonPopCount.ToString();
+        ballonsText.text = "Pops this rounds: " + ballonPopCount.ToString();
         livesText.text = "Lives: " + livesLeft.ToString();
         // restart if dead.
         if (livesLeft == 0)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            // UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
         }
     }
 

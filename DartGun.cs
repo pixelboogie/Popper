@@ -18,6 +18,8 @@ public class DartGun : MonoBehaviour
       public AudioClip click;
       public AudioClip reloadSound;
 
+
+
       void Update()
       {
             //Check if player is pulling the trigger
@@ -53,24 +55,16 @@ public class DartGun : MonoBehaviour
 
                   //Add force to the Dart rigidbody component
                   dart.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * Time.deltaTime * shotPower);
-                  //Spinn the dart in the correct direction. if this is wrong for you try other values until it's correct
-                  //   dart.transform.eulerAngles += new Vector3(0, 90, 90);
-
-                  //  dart.transform.eulerAngles += new Vector3(0, 90, 0);
-                  //   dart.transform.eulerAngles = new Vector3(0, 0, 0);
-
-                  //  dart.transform.eulerAngles = new Vector3(90, 0, 0);
-
-                  //      dart.transform.eulerAngles = new Vector3(-90, 0, 90);
-
                   loadedRounds--;
 
-                 updateAmmoText();
+                  updateAmmoText();
 
                   //Destroy the dart after X seconds.
                   Destroy(dart, 3f);
-            }else{
-                    source.PlayOneShot(click);
+            }
+            else
+            {
+                  source.PlayOneShot(click, 1f);
             }
       }
 
@@ -78,16 +72,29 @@ public class DartGun : MonoBehaviour
 
       void Reload()
       {
-            source.PlayOneShot(reloadSound);
+
             loadedRounds = magCapacity;
             updateAmmoText();
+
+
+            if (source.isPlaying == true)
+            {
+
+            }
+            else
+            {
+                  source.PlayOneShot(reloadSound);
+            }
+
       }
 
-      
+
+
       public void updateAmmoText()
       {
-            ammoText.text = "Ammo: " + loadedRounds.ToString();
+            // ammoText.text = "Ammo: " + loadedRounds.ToString();
+            ammoText.text = loadedRounds.ToString();
       }
 
-      
+
 }

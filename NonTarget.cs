@@ -12,6 +12,10 @@ public class NonTarget : MonoBehaviour
 
       private bool friendlySpawned = false;
 
+      public AudioSource source;
+      public AudioClip nonTargetClip;
+      public AudioClip nonTargetDieClip;
+
       // Start is called before the first frame update
       void Start()
       {
@@ -31,8 +35,15 @@ public class NonTarget : MonoBehaviour
                   {
                         var friendly = Instantiate(friendlyPrefab, friendlyLocation.position, friendlyLocation.transform.rotation);
                         friendlySpawned = true;
-
+                        source.PlayOneShot(nonTargetClip);
                   }
             }
       }
+
+public void playDie(){
+      source.PlayOneShot(nonTargetDieClip);
+}
+
+
+
 }

@@ -7,18 +7,13 @@ public class HappyFaceDartgun : MonoBehaviour
 {
 
     public TextMeshPro ammoText;
-//     public GameObject Blaster;
-
-//     public int roundsCount;
-
-    // Start is called before the first frame update
-
-
 
       GameObject referenceObject;
       DartGun referenceScript;
 
 
+      GameObject nonTargetObject;
+      NonTarget nonTargetScript;
 
     void Start()
     {
@@ -26,6 +21,8 @@ public class HappyFaceDartgun : MonoBehaviour
           referenceObject = GameObject.FindWithTag("ObjectOne");
           referenceScript = referenceObject.GetComponent<DartGun>();
 
+            nonTargetObject = GameObject.FindWithTag("nonTarget");
+          nonTargetScript = nonTargetObject.GetComponent<NonTarget>();
 
     }
 
@@ -40,21 +37,13 @@ public class HappyFaceDartgun : MonoBehaviour
         if(other.CompareTag("Dart"))
         {
 
-            // health--;
-            // ballonCountDisplay.GetComponent<DisplayText>().BallonPopIncrease();
-            // popSound.GetComponent<PopSound>().PlayPop();
-            // if (health <= 0)
-            // {
-            //     Destroy(this.gameObject);
-            // }
 
-                  //  Blaster.GetComponent.<Blaster>.roundsCount = 10;
-                  //  Blaster.roundsCount = 10;
-            //     ammoText.text = "Ammo: " + 10000.ToString();
-            //  referenceScript.roundsCount = 10;
                 referenceScript.magCapacity = 20; // extend mag capacity
                 referenceScript.loadedRounds = 20;  // and reload the gun
                 referenceScript.updateAmmoText();
+
+                      nonTargetScript.playDie();
+
                   Destroy(this.gameObject);
         }
     }

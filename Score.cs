@@ -9,12 +9,13 @@ public class Score : MonoBehaviour
 {
 
       public static int myScore = 0;
+
       public TextMeshPro ScoreText;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+      //   myScore = 0;
     }
 
     // Update is called once per frame
@@ -24,7 +25,8 @@ public class Score : MonoBehaviour
       //         Debug.Log("myScore is: " + myScore);
       //   }
 
-      ScoreText.text = myScore.ToString();
+      ScoreText.text = "Score: " + myScore.ToString();
+
     }
 
 
