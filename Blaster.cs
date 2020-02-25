@@ -7,12 +7,16 @@ public class Blaster : MonoBehaviour {
 
       public GameObject dartPrefab;
       public Transform barrelLocation;
-      public float shotPower = 700000;
+      public float shotPower = 200000; // 700000;
 
       public int loadedRounds = 10; // rounds on hand to use
       public int magCapacity = 10;
+      public int carryRounds = 20; // rounds carried (not in mag)
+      public int carryCapacity = 50;
+
 
       public TextMeshPro ammoText;
+public TextMeshPro carryRoundsText;
 
       public AudioSource source;
       public AudioClip shot;
@@ -25,8 +29,8 @@ public class Blaster : MonoBehaviour {
                   Shoot ();
             }
 
-            // if (OVRInput.GetDown(OVRInput.Button.One))
-            if ((OVRInput.Get (OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) >.8) && (OVRInput.Get (OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) >.8))
+            if (OVRInput.GetDown(OVRInput.Button.One))
+            // if ((OVRInput.Get (OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) >.8) && (OVRInput.Get (OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) >.8))
 
             {
                   Reload ();
@@ -55,20 +59,38 @@ public class Blaster : MonoBehaviour {
             }
       }
 
-      void Reload () {
 
-            loadedRounds = magCapacity;
-            updateAmmoText ();
 
-            if (source.isPlaying == true) {
+      void Reload()
+      {
+        
+                  if (carryRounds >= 1)
+            {
+                  if(carryRounds < magCapacity){
+                        loadedRounds = loadedRounds + carryRounds;
+                            carryRounds = 0;
+                  }else{
+                  loadedRounds = magCapacity;
+                      carryRounds = carryRounds - magCapacity;
+                  }
 
-            } else {
-                  source.PlayOneShot (reloadSound);
+                             updateAmmoText();
             }
+
+            if (source.isPlaying == true)
+            {
+
+            }
+            else
+            {
+                  source.PlayOneShot(reloadSound);
+            }
+
       }
 
       public void updateAmmoText () {
        ammoText.text = loadedRounds.ToString ();
+     carryRoundsText.text = carryRounds.ToString();
       }
 
 }

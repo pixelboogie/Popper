@@ -11,12 +11,21 @@ public class DartGun : MonoBehaviour
       public float shotPower = 180000;
       public int loadedRounds = 10; // rounds on hand to use
       public int magCapacity = 10;
+
+      public int carryRounds = 20; // rounds carried (not in mag)
+      public int carryCapacity = 50;
+
+
+
       public TextMeshPro ammoText;
+
+           public TextMeshPro carryRoundsText;
 
       public AudioSource source;
       public AudioClip shot;
       public AudioClip click;
       public AudioClip reloadSound;
+
 
 
 
@@ -28,8 +37,8 @@ public class DartGun : MonoBehaviour
                   Shoot();
             }
 
-            // if (OVRInput.GetDown(OVRInput.Button.One))
-            if ((OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > .8) && (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > .8))
+            if (OVRInput.GetDown(OVRInput.Button.One))
+            // if ((OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > .8) && (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > .8))
             {
                   Reload();
             }
@@ -72,10 +81,19 @@ public class DartGun : MonoBehaviour
 
       void Reload()
       {
+        
+                  if (carryRounds >= 1)
+            {
+                  if(carryRounds < magCapacity){
+                        loadedRounds = loadedRounds + carryRounds;
+                            carryRounds = 0;
+                  }else{
+                  loadedRounds = magCapacity;
+                      carryRounds = carryRounds - magCapacity;
+                  }
 
-            loadedRounds = magCapacity;
-            updateAmmoText();
-
+                             updateAmmoText();
+            }
 
             if (source.isPlaying == true)
             {
@@ -94,6 +112,7 @@ public class DartGun : MonoBehaviour
       {
             // ammoText.text = "Ammo: " + loadedRounds.ToString();
             ammoText.text = loadedRounds.ToString();
+            carryRoundsText.text = carryRounds.ToString();
       }
 
 
