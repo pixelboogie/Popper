@@ -22,7 +22,7 @@ public class DisplayText : MonoBehaviour
     void Update()
     {
         ballonsText.text = "Pops this rounds: " + ballonPopCount.ToString();
-        livesText.text = "Lives: " + livesLeft.ToString();
+        livesText.text = "Bummers: " + livesLeft.ToString();
         // restart if dead.
         if (livesLeft == 0)
         {
