@@ -12,6 +12,9 @@ public class Ballon : MonoBehaviour
     public int health = 1;
     public float speed = 1;
     private Material m_Material;
+
+
+    
     int CompareObNames(GameObject x, GameObject y)
     {
         return x.name.CompareTo(y.name);
