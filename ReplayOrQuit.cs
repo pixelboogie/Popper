@@ -34,7 +34,7 @@ public class ReplayOrQuit : MonoBehaviour
                   // LevelLoader LLScript = LL.GetComponent<LevelLoader> ();
                   // LLScript.LoadNextLevel();
 
-                  Score.myScore = 0; // reset the score to 0 if we replay
+                  Score.totalPops = 0; // reset the score to 0 if we replay
 
         }
         if (other.CompareTag("DoorExit"))

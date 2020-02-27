@@ -40,6 +40,8 @@ public TextMeshPro carryRoundsText;
 
       void Shoot () {
 
+                        if(PauseMenu.gameIsPaused == false){
+
             if (loadedRounds >= 1) {
 
                   source.PlayOneShot (shot);
@@ -57,6 +59,8 @@ public TextMeshPro carryRoundsText;
                   //Destroy the dart after X seconds.
                   Destroy (dart, 3f);
             }
+
+                        }
       }
 
 

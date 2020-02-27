@@ -80,7 +80,7 @@ public class SpecialEnemy : MonoBehaviour
             if (other.CompareTag("Dart"))
             {
                   health--;
-                  Score.myScore++;
+                  Score.totalPops++;
 
                   if (health <= 0)
                   {
@@ -97,7 +97,7 @@ public class SpecialEnemy : MonoBehaviour
             source.PlayOneShot(clip);
 
             // Debug.Log("________________________Explode");
-            Score.myScore = Score.myScore + killCount;
+            Score.totalPops = Score.totalPops + killCount;
             this.transform.localScale = new Vector3(0, 0, 0);
             Destroy(gameObject, 1.5f);
       }

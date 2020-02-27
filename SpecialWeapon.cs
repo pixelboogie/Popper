@@ -61,7 +61,7 @@ public class SpecialWeapon : MonoBehaviour
 
 
             // Debug.Log("________________________Explode");
-              Score.myScore =   Score.myScore + killCount;
+              Score.totalPops =  Score.totalPops + killCount;
               this.transform.localScale = new Vector3(0,0,0);
             Destroy(gameObject, 2.5f);
       }

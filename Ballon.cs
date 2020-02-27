@@ -72,7 +72,7 @@ public class Ballon : MonoBehaviour
             ballonCountDisplay.GetComponent<DisplayText>().BallonPopIncrease();
             popSound.GetComponent<PopSound>().PlayPop();
 
-             Score.myScore++;
+             Score.totalPops++;
 
             if (health <= 0)
             {

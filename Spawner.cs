@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
       public Transform enemyLocation; // the location we will spawn the friendly
       public float timeLeft = 8.0f; // time to remain before spawning
 
-      private bool enemySpawned = false;
+      // private bool enemySpawned = false;
       // Start is called before the first frame update
       void Start()
       {

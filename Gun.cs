@@ -47,7 +47,7 @@ public class Gun : MonoBehaviour
 
      
 
-
+            if(PauseMenu.gameIsPaused == false){
 
             if (loadedRounds >= 1)
             {
@@ -70,6 +70,7 @@ public class Gun : MonoBehaviour
                   Destroy(dart, 0.3f);
             }else{
                     source.PlayOneShot(click);
+            }
             }
       }
 

@@ -49,6 +49,7 @@ public class DartGun : MonoBehaviour
       void Shoot()
       {
 
+            if(PauseMenu.gameIsPaused == false){
             //Instansiate a new dart at the barrel location in the barrellocation rotation
 
             if (loadedRounds >= 1)
@@ -74,6 +75,8 @@ public class DartGun : MonoBehaviour
             else
             {
                   source.PlayOneShot(click, 1f);
+            }
+
             }
       }
 

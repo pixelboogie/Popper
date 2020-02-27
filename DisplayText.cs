@@ -6,28 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class DisplayText : MonoBehaviour
 {
-    public TextMeshPro livesText;
+//     public TextMeshPro BummersText;
     public TextMeshPro ballonsText;
     private int ballonPopCount = 0;
-    private int livesLeft = 10;
+//     private int bummersLeft = 10;
 
       private int levelIndex;
       public int maxBalloons = 3;
 
-
-
-
-
-    // Update is called once per frame
     void Update()
     {
-        ballonsText.text = "Pops this rounds: " + ballonPopCount.ToString();
-        livesText.text = "Bummers: " + livesLeft.ToString();
-        // restart if dead.
-        if (livesLeft == 0)
+        ballonsText.text = ballonPopCount.ToString();
+      //   BummersText.text = bummersLeft.ToString();
+        if (Score.bummersLeft <= 0)
         {
+                Debug.Log("++++++++++++++++ Go to EndScene");
             // UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
+            // UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
+      //      SceneManager.LoadScene("EndSceneLose");
+       SceneManager.LoadScene("EndScene");
+  
         }
     }
 
@@ -36,8 +34,8 @@ public class DisplayText : MonoBehaviour
         ballonPopCount++;
 
       if(ballonPopCount > maxBalloons){
-            Debug.Log("Got them all");
-            
+            // Debug.Log("Got them all");
+            Score.myLevels++; // count the level as completed
             levelIndex = SceneManager.GetActiveScene ().buildIndex + 1;
             SceneManager.LoadScene (levelIndex);
       }
@@ -46,7 +44,7 @@ public class DisplayText : MonoBehaviour
 
     public void LivesDecrease()
     {
-        livesLeft--;
+        Score.bummersLeft--;
     }
 
   
