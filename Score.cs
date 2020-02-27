@@ -20,8 +20,6 @@ public class Score : MonoBehaviour
 
           public TextMeshPro FinalScoreText;
 
-
-
  public TextMeshPro BummersText;
 
 private int ml = 1; // minimum for score calc

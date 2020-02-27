@@ -14,6 +14,8 @@ public class DisplayText : MonoBehaviour
       private int levelIndex;
       public int maxBalloons = 3;
 
+      private bool alreadyRan = false; // to stop it from adding multiple levels completed
+
     void Update()
     {
         ballonsText.text = ballonPopCount.ToString();
@@ -33,7 +35,9 @@ public class DisplayText : MonoBehaviour
     {
         ballonPopCount++;
 
-      if(ballonPopCount > maxBalloons){
+      if((ballonPopCount >= maxBalloons) && (alreadyRan == false)){
+
+            alreadyRan = true;
             // Debug.Log("Got them all");
             Score.myLevels++; // count the level as completed
             levelIndex = SceneManager.GetActiveScene ().buildIndex + 1;
