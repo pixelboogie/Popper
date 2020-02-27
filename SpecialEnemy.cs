@@ -11,7 +11,7 @@ public class SpecialEnemy : MonoBehaviour
 
       public float throttle = 10f;
 
-      public int health = 7;
+      public int health = 20;
 
       private Material m_Material;
 
@@ -33,7 +33,7 @@ public class SpecialEnemy : MonoBehaviour
             //   transform.Translate(Vector3.forward * Time.deltaTime);
             // Debug.Log("____________________   dist: " + dist);
             // }
-            if (dist > 40)
+            if (dist > 80)
             {
                   Destroy(gameObject);
             }
@@ -46,30 +46,30 @@ public class SpecialEnemy : MonoBehaviour
       private void ColorBallons()
       {
 
-            if (health == 6)
+            if (health == 20)
             {
                   m_Material.color = Color.black;
             }
 
-            if (health == 5)
+            if (health == 17)
             {
                   m_Material.color = Color.gray;
             }
 
-            if (health == 4)
+            if (health == 14)
             {
                   m_Material.color = Color.cyan;
             }
 
-            if (health == 3)
+            if (health == 10)
             {
                   m_Material.color = Color.red;
             }
-            else if (health == 2)
+            else if (health == 7)
             {
                   m_Material.color = Color.blue;
             }
-            else if (health == 1)
+            else if (health == 3)
             {
                   m_Material.color = Color.green;
             }
@@ -77,10 +77,8 @@ public class SpecialEnemy : MonoBehaviour
 
       private void OnTriggerEnter(Collider other)
       {
-
             if (other.CompareTag("Dart"))
             {
-
                   health--;
                   Score.myScore++;
 
