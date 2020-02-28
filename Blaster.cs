@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Blaster : MonoBehaviour {
+public class Blaster : MonoBehaviour
+{
 
       public GameObject dartPrefab;
       public Transform barrelLocation;
@@ -12,73 +13,90 @@ public class Blaster : MonoBehaviour {
       public int loadedRounds = 10; // rounds on hand to use
       public int magCapacity = 10;
       public int carryRounds = 20; // rounds carried (not in mag)
-      public int carryCapacity = 50;
+      public int carryCapacity = 20;
 
 
       public TextMeshPro ammoText;
-public TextMeshPro carryRoundsText;
+      public TextMeshPro carryRoundsText;
+
+      public TextMeshPro carryCapacityText;
 
       public AudioSource source;
       public AudioClip shot;
       public AudioClip click;
       public AudioClip reloadSound;
 
-      void Update () {
+      void Update()
+      {
+
+            updateAmmoText();
+
+
             //Check if player is pulling the trigger
-            if (OVRInput.GetDown (OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)) {
-                  Shoot ();
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
+            {
+                  Shoot();
             }
 
             if (OVRInput.GetDown(OVRInput.Button.One))
             // if ((OVRInput.Get (OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) >.8) && (OVRInput.Get (OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) >.8))
 
             {
-                  Reload ();
+                  Reload();
             }
 
       }
 
-      void Shoot () {
+      void Shoot()
+      {
 
-                        if(PauseMenu.gameIsPaused == false){
+            if (PauseMenu.gameIsPaused == false)
+            {
 
-            if (loadedRounds >= 1) {
+                  if (loadedRounds >= 1)
+                  {
 
-                  source.PlayOneShot (shot);
+                        source.PlayOneShot(shot);
 
-                  var dart = Instantiate (dartPrefab, barrelLocation.position, barrelLocation.transform.rotation);
-                  //     var dart =  Instantiate(dartPrefab, barrelLocation.position, testVector);
+                        var dart = Instantiate(dartPrefab, barrelLocation.position, barrelLocation.transform.rotation);
+                        //     var dart =  Instantiate(dartPrefab, barrelLocation.position, testVector);
 
-                  //Add force to the Dart rigidbody component
-                  dart.GetComponent<Rigidbody> ().AddForce (barrelLocation.forward * Time.deltaTime * shotPower);
+                        //Add force to the Dart rigidbody component
+                        dart.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * Time.deltaTime * shotPower);
 
-                  loadedRounds--;
+                        loadedRounds--;
 
-                  updateAmmoText ();
+                        // updateAmmoText();
 
-                  //Destroy the dart after X seconds.
-                  Destroy (dart, 3f);
+                        //Destroy the dart after X seconds.
+                        Destroy(dart, 3f);
+                  }  else
+                  {
+                        source.PlayOneShot(click, 1f);
+                  }
+
             }
-
-                        }
       }
 
 
 
       void Reload()
       {
-        
-                  if (carryRounds >= 1)
+
+            if (carryRounds >= 1)
             {
-                  if(carryRounds < magCapacity){
+                  if (carryRounds < magCapacity)
+                  {
                         loadedRounds = loadedRounds + carryRounds;
-                            carryRounds = 0;
-                  }else{
-                  loadedRounds = magCapacity;
-                      carryRounds = carryRounds - magCapacity;
+                        carryRounds = 0;
+                  }
+                  else
+                  {
+                        loadedRounds = magCapacity;
+                        carryRounds = carryRounds - magCapacity;
                   }
 
-                             updateAmmoText();
+                  // updateAmmoText();
             }
 
             if (source.isPlaying == true)
@@ -92,9 +110,12 @@ public TextMeshPro carryRoundsText;
 
       }
 
-      public void updateAmmoText () {
-       ammoText.text = loadedRounds.ToString ();
-     carryRoundsText.text = carryRounds.ToString();
+      public void updateAmmoText()
+      {
+            ammoText.text = loadedRounds.ToString();
+            carryRoundsText.text = carryRounds.ToString();
+                carryCapacityText.text = carryCapacity.ToString();
+
       }
 
 }

@@ -5,7 +5,6 @@ using TMPro;
 
 public class HappyFaceDartgun : MonoBehaviour
 {
-
       public TextMeshPro ammoText;
       GameObject referenceObject;
       DartGun referenceScript;

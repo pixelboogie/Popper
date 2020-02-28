@@ -64,8 +64,6 @@ public class DartGun : MonoBehaviour
 
                         source.PlayOneShot(shot);
 
-
-
                         var dart = Instantiate(dartPrefab, barrelLocation.position, barrelLocation.transform.rotation);
                         //     var dart =  Instantiate(dartPrefab, barrelLocation.position, testVector);
 

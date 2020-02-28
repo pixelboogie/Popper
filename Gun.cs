@@ -5,7 +5,6 @@ using TMPro;
 
 public class Gun : MonoBehaviour
 {
-
       public GameObject dartPrefab;
       public Transform barrelLocation;
       public float shotPower = 200000;
@@ -14,18 +13,21 @@ public class Gun : MonoBehaviour
       public int magCapacity = 10;
 
       public int carryRounds = 20; // rounds carried (not in mag)
-      public int carryCapacity = 50;
-            public TextMeshPro ammoText;
+      public int carryCapacity = 20;
+      public TextMeshPro ammoText;
 
-           public TextMeshPro carryRoundsText;
+      public TextMeshPro carryRoundsText;
+      public TextMeshPro carryCapacityText;
 
       public AudioSource source;
       public AudioClip shot;
       public AudioClip click;
-       public AudioClip reloadSound;
+      public AudioClip reloadSound;
 
       void Update()
       {
+            updateAmmoText();
+
             //Check if player is pulling the trigger
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
             {
@@ -33,7 +35,7 @@ public class Gun : MonoBehaviour
             }
 
             if (OVRInput.GetDown(OVRInput.Button.One))
-                        // if ((OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > .8) && (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > .8))
+            // if ((OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > .8) && (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > .8))
 
             {
                   Reload();
@@ -45,32 +47,33 @@ public class Gun : MonoBehaviour
       void Shoot()
       {
 
-     
 
-            if(PauseMenu.gameIsPaused == false){
 
-            if (loadedRounds >= 1)
+            if (PauseMenu.gameIsPaused == false)
             {
 
-                  source.PlayOneShot(shot);
+                  if (loadedRounds >= 1)
+                  {
 
-                  var dart = Instantiate(dartPrefab, barrelLocation.position, barrelLocation.transform.rotation);
+                        source.PlayOneShot(shot);
 
-
-                  //Add force to the Dart rigidbody component
-                  dart.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * Time.deltaTime * shotPower);
-
-
-                  loadedRounds--;
-
-                  updateAmmoText();
+                        var dart = Instantiate(dartPrefab, barrelLocation.position, barrelLocation.transform.rotation);
 
 
-                  //Destroy the dart after X seconds.
-                  Destroy(dart, 0.3f);
-            }else{
-                    source.PlayOneShot(click);
-            }
+                        //Add force to the Dart rigidbody component
+                        dart.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * Time.deltaTime * shotPower);
+                        loadedRounds--;
+
+                        // updateAmmoText();
+
+
+                        //Destroy the dart after X seconds.
+                        Destroy(dart, 0.3f);
+                  }
+                  else
+                  {
+                        source.PlayOneShot(click);
+                  }
             }
       }
 
@@ -78,18 +81,21 @@ public class Gun : MonoBehaviour
 
       void Reload()
       {
-            
-                  if (carryRounds >= 1)
+
+            if (carryRounds >= 1)
             {
-                  if(carryRounds < magCapacity){
+                  if (carryRounds < magCapacity)
+                  {
                         loadedRounds = loadedRounds + carryRounds;
-                            carryRounds = 0;
-                  }else{
-                  loadedRounds = magCapacity;
-                      carryRounds = carryRounds - magCapacity;
+                        carryRounds = 0;
+                  }
+                  else
+                  {
+                        loadedRounds = magCapacity;
+                        carryRounds = carryRounds - magCapacity;
                   }
 
-                             updateAmmoText();
+                  //      updateAmmoText();
             }
 
             if (source.isPlaying == true)
@@ -106,8 +112,10 @@ public class Gun : MonoBehaviour
 
       public void updateAmmoText()
       {
-             ammoText.text = loadedRounds.ToString();
+            ammoText.text = loadedRounds.ToString();
             carryRoundsText.text = carryRounds.ToString();
+            carryCapacityText.text = carryCapacity.ToString();
+
       }
 
 
