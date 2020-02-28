@@ -6,7 +6,8 @@ public class Spawner : MonoBehaviour
 {
       public GameObject specialEnemy; // which prefab we will be spawning
       public Transform enemyLocation; // the location we will spawn the friendly
-      public float timeLeft = 8.0f; // time to remain before spawning
+      public float spawnDelay = 8.0f; // time to remain before spawning
+      public float spawnInterval = 30.0f; // time to remain before spawning
 
       // private bool enemySpawned = false;
       // Start is called before the first frame update
@@ -20,13 +21,13 @@ public class Spawner : MonoBehaviour
       {
             // if (enemySpawned == false)
             {
-                  timeLeft -= Time.deltaTime;
+                  spawnDelay -= Time.deltaTime;
 
-                  if (timeLeft < 0)
+                  if (spawnDelay < 0)
                   {
                         var friendly = Instantiate(specialEnemy, enemyLocation.position, enemyLocation.transform.rotation);
                         // enemySpawned = true;
-                        timeLeft = 10.0f;
+                        spawnDelay = spawnInterval;
                   }
             }
 

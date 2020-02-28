@@ -5,17 +5,19 @@ using UnityEngine;
 public class SpecialEnemy : MonoBehaviour
 {
 
-      private int killCount = 10;
+      private int killCount = 0;
       public AudioSource source;
       public AudioClip clip;
 
-      public float throttle = 10f;
+      public float throttle = 16f;
 
       public int health = 20;
 
       private Material m_Material;
 
       private Vector3 endPosition = new Vector3(0, 20, -25);
+
+      private bool alreadyExploded = false;
 
       // Start is called before the first frame update
       void Start()
@@ -81,6 +83,7 @@ public class SpecialEnemy : MonoBehaviour
             {
                   health--;
                   Score.totalPops++;
+                  // DisplayText.ballonPopCount++;
 
                   if (health <= 0)
                   {
@@ -93,12 +96,22 @@ public class SpecialEnemy : MonoBehaviour
 
       private void explode()
       {
+            
+            if (!alreadyExploded)
+            {
+                  alreadyExploded = true;
+                  source.PlayOneShot(clip);
 
-            source.PlayOneShot(clip);
-
-            // Debug.Log("________________________Explode");
-            Score.totalPops = Score.totalPops + killCount;
-            this.transform.localScale = new Vector3(0, 0, 0);
-            Destroy(gameObject, 1.5f);
+                  if (Score.bummersLeft < 10)
+                  {
+                        Score.bummersLeft++;
+                  }
+                  // Debug.Log("________________________Explode");
+                  // Score.totalPops = Score.totalPops + killCount;
+                  // DisplayText.ballonPopCount = Score.totalPops + killCount;
+                  this.transform.localScale = new Vector3(0, 0, 0);
+                  Destroy(gameObject, 1.5f);
+                  // Destroy(gameObject);
+            }
       }
 }

@@ -8,7 +8,9 @@ public class DisplayText : MonoBehaviour
 {
 //     public TextMeshPro BummersText;
     public TextMeshPro ballonsText;
-    private int ballonPopCount = 0;
+//     public static int ballonPopCount = 0;
+     private int ballonPopCount = 0;
+
     public static int popsLastRound;
 //     private int bummersLeft = 10;
 
