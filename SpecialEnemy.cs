@@ -25,7 +25,6 @@ public class SpecialEnemy : MonoBehaviour
             m_Material = GetComponent<Renderer>().material;
       }
 
-      // Update is called once per frame
       void Update()
       {
 

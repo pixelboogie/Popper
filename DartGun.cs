@@ -13,13 +13,15 @@ public class DartGun : MonoBehaviour
       public int magCapacity = 10;
 
       public int carryRounds = 20; // rounds carried (not in mag)
-      public int carryCapacity = 50;
+      public int carryCapacity = 20;
 
 
 
       public TextMeshPro ammoText;
 
-           public TextMeshPro carryRoundsText;
+      public TextMeshPro carryRoundsText;
+
+      public TextMeshPro carryCapacityText;
 
       public AudioSource source;
       public AudioClip shot;
@@ -31,6 +33,9 @@ public class DartGun : MonoBehaviour
 
       void Update()
       {
+
+            updateAmmoText();
+
             //Check if player is pulling the trigger
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
             {
@@ -49,33 +54,34 @@ public class DartGun : MonoBehaviour
       void Shoot()
       {
 
-            if(PauseMenu.gameIsPaused == false){
-            //Instansiate a new dart at the barrel location in the barrellocation rotation
-
-            if (loadedRounds >= 1)
+            if (PauseMenu.gameIsPaused == false)
             {
+                  //Instansiate a new dart at the barrel location in the barrellocation rotation
+
+                  if (loadedRounds >= 1)
+                  {
 
 
-                  source.PlayOneShot(shot);
+                        source.PlayOneShot(shot);
 
 
 
-                  var dart = Instantiate(dartPrefab, barrelLocation.position, barrelLocation.transform.rotation);
-                  //     var dart =  Instantiate(dartPrefab, barrelLocation.position, testVector);
+                        var dart = Instantiate(dartPrefab, barrelLocation.position, barrelLocation.transform.rotation);
+                        //     var dart =  Instantiate(dartPrefab, barrelLocation.position, testVector);
 
-                  //Add force to the Dart rigidbody component
-                  dart.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * Time.deltaTime * shotPower);
-                  loadedRounds--;
+                        //Add force to the Dart rigidbody component
+                        dart.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * Time.deltaTime * shotPower);
+                        loadedRounds--;
 
-                  updateAmmoText();
+                        // updateAmmoText();
 
-                  //Destroy the dart after X seconds.
-                  Destroy(dart, 3f);
-            }
-            else
-            {
-                  source.PlayOneShot(click, 1f);
-            }
+                        //Destroy the dart after X seconds.
+                        Destroy(dart, 3f);
+                  }
+                  else
+                  {
+                        source.PlayOneShot(click, 1f);
+                  }
 
             }
       }
@@ -84,18 +90,21 @@ public class DartGun : MonoBehaviour
 
       void Reload()
       {
-        
-                  if (carryRounds >= 1)
+
+            if (carryRounds >= 1)
             {
-                  if(carryRounds < magCapacity){
+                  if (carryRounds < magCapacity)
+                  {
                         loadedRounds = loadedRounds + carryRounds;
-                            carryRounds = 0;
-                  }else{
-                  loadedRounds = magCapacity;
-                      carryRounds = carryRounds - magCapacity;
+                        carryRounds = 0;
+                  }
+                  else
+                  {
+                        loadedRounds = magCapacity;
+                        carryRounds = carryRounds - magCapacity;
                   }
 
-                             updateAmmoText();
+                  //      updateAmmoText();
             }
 
             if (source.isPlaying == true)
@@ -116,6 +125,8 @@ public class DartGun : MonoBehaviour
             // ammoText.text = "Ammo: " + loadedRounds.ToString();
             ammoText.text = loadedRounds.ToString();
             carryRoundsText.text = carryRounds.ToString();
+            carryCapacityText.text = carryCapacity.ToString();
+
       }
 
 

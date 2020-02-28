@@ -8,8 +8,8 @@ public class NonTarget : MonoBehaviour
       public GameObject friendlyPrefab; // which prefab we will be spawning
       public Transform friendlyLocation; // the location we will spawn the friendly
 
-      private float timeLeft = 8.0f; // time to remain before spawning the friendly
-
+            private float timeLeft = 5.0f; // time to remain before spawning the friendly
+            private float resetInterval = 20.0f; // for each subsequent spawn
       private bool friendlySpawned = false;
 
       public AudioSource source;
@@ -33,16 +33,36 @@ public class NonTarget : MonoBehaviour
 
                   if (timeLeft < 0)
                   {
-                        var friendly = Instantiate(friendlyPrefab, friendlyLocation.position, friendlyLocation.transform.rotation);
-                        friendlySpawned = true;
-                        source.PlayOneShot(nonTargetClip);
+                        timeLeft = resetInterval;
+                        spawnOne();
                   }
             }
+
+            // if (friendlySpawned == true)
+            // {
+            //       timeLeft -= Time.deltaTime;
+
+            //       if (timeLeft < 0)
+            //       {
+            //             spawnOne();
+            //       }
+            // }
+
       }
 
-public void playDie(){
-      source.PlayOneShot(nonTargetDieClip);
-}
+
+
+      public void spawnOne()
+      {
+            var friendly = Instantiate(friendlyPrefab, friendlyLocation.position, friendlyLocation.transform.rotation);
+            // friendlySpawned = true;
+            source.PlayOneShot(nonTargetClip);
+      }
+
+      public void playDie()
+      {
+            source.PlayOneShot(nonTargetDieClip);
+      }
 
 
 
