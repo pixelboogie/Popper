@@ -9,7 +9,7 @@ public class Score : MonoBehaviour
 {
 
       public static int totalPops = 0;
-
+      public static int popsLastLevel = 0;
       public static int myLevels = 0;
 
        public static int bummersLeft = 10;
@@ -21,6 +21,8 @@ public class Score : MonoBehaviour
           public TextMeshPro FinalScoreText;
 
  public TextMeshPro BummersText;
+
+ public TextMeshPro PopsLastLevelText;
 
 private int ml = 1; // minimum for score calc
 private int tp = 1; // minimum for score calc
@@ -45,6 +47,7 @@ private int bl = 1; // minimum for score calc
       LevelsText.text = myLevels.ToString();
 
        BummersText.text = bummersLeft.ToString();
+       PopsLastLevelText.text = popsLastLevel.ToString();
 
        if(myLevels <=1){
             ml = 1;

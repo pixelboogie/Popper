@@ -9,6 +9,7 @@ public class DisplayText : MonoBehaviour
 //     public TextMeshPro BummersText;
     public TextMeshPro ballonsText;
     private int ballonPopCount = 0;
+    public static int popsLastRound;
 //     private int bummersLeft = 10;
 
       private int levelIndex;
@@ -40,6 +41,7 @@ public class DisplayText : MonoBehaviour
             alreadyRan = true;
             // Debug.Log("Got them all");
             Score.myLevels++; // count the level as completed
+            Score.popsLastLevel = ballonPopCount; 
             levelIndex = SceneManager.GetActiveScene ().buildIndex + 1;
             SceneManager.LoadScene (levelIndex);
       }
