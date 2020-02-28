@@ -28,9 +28,15 @@ public class DartGun : MonoBehaviour
       public AudioClip click;
       public AudioClip reloadSound;
 
+      GameObject referenceObject;
+      
+//       private Material m_Material;
 
-
-
+      private void Start()
+      {
+            // ref this so we can change color when low ammo
+            referenceObject = GameObject.FindWithTag("ammoText");
+      }
       void Update()
       {
 
@@ -121,6 +127,15 @@ public class DartGun : MonoBehaviour
       public void updateAmmoText()
       {
             // ammoText.text = "Ammo: " + loadedRounds.ToString();
+
+            if (loadedRounds < 6)
+            {
+                  referenceObject.GetComponent<TextMeshPro>().color = Color.red;
+            }else{
+                   referenceObject.GetComponent<TextMeshPro>().color = Color.white;
+            }
+
+
             ammoText.text = loadedRounds.ToString();
             carryRoundsText.text = carryRounds.ToString();
             carryCapacityText.text = carryCapacity.ToString();

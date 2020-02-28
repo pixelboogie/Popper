@@ -24,6 +24,15 @@ public class Gun : MonoBehaviour
       public AudioClip click;
       public AudioClip reloadSound;
 
+            GameObject referenceObject;
+
+      private void Start()
+      {
+            // ref this so we can change color when low ammo
+            referenceObject = GameObject.FindWithTag("ammoText");
+      }
+
+
       void Update()
       {
             updateAmmoText();
@@ -112,6 +121,14 @@ public class Gun : MonoBehaviour
 
       public void updateAmmoText()
       {
+
+                        if (loadedRounds < 6)
+            {
+                  referenceObject.GetComponent<TextMeshPro>().color = Color.red;
+            }else{
+                   referenceObject.GetComponent<TextMeshPro>().color = Color.white;
+            }
+            
             ammoText.text = loadedRounds.ToString();
             carryRoundsText.text = carryRounds.ToString();
             carryCapacityText.text = carryCapacity.ToString();
