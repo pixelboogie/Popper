@@ -11,7 +11,7 @@ public class HappyFaceGun : MonoBehaviour
       GameObject nonTargetObject;
       NonTarget nonTargetScript;
       private Vector3 startPosition;
-      public float throttle = .3f; // speed it rises
+      public float throttle = 1.5f; // speed it rises
       float dist; // track dist balloon goes up before destroying it
 
       private int carryCapacityBoost = 10; // how much to increase carrycapacity if popped
@@ -27,7 +27,7 @@ public class HappyFaceGun : MonoBehaviour
             nonTargetObject = GameObject.FindWithTag("nonTarget");
             nonTargetScript = nonTargetObject.GetComponent<NonTarget>();
 
-                        startPosition = transform.position;
+            startPosition = transform.position;
 
       }
 

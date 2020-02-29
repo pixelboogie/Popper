@@ -8,8 +8,8 @@ public class NonTarget : MonoBehaviour
       public GameObject friendlyPrefab; // which prefab we will be spawning
       public Transform friendlyLocation; // the location we will spawn the friendly
 
-            private float timeLeft = 5.0f; // time to remain before spawning the friendly
-            private float resetInterval = 20.0f; // for each subsequent spawn
+      private float timeLeft = 5.0f; // time to remain before spawning the friendly
+      private float resetInterval = 30.0f; // for each subsequent spawn
       private bool friendlySpawned = false;
 
       public AudioSource source;
