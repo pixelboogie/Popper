@@ -5,8 +5,8 @@ using UnityEngine;
 public class SpecialWeapon : MonoBehaviour
 {
 
-      public float radius = 200f;
-      public float force = 700f;
+      private float radius = 20f;
+      private float force = 4000f;
 
       private int killCount = 0;
 
@@ -14,24 +14,11 @@ public class SpecialWeapon : MonoBehaviour
       public AudioSource source;
       public AudioClip clip;
 
-      // Start is called before the first frame update
-      void Start()
-      {
-
-      }
-
-      // Update is called once per frame
-      void Update()
-      {
-
-      }
 
       private void OnTriggerEnter(Collider other)
       {
-
             if (other.CompareTag("Dart"))
             {
-
                   explode();
             }
       }
@@ -46,12 +33,14 @@ public class SpecialWeapon : MonoBehaviour
 
             source.PlayOneShot(clip);
 
-
             foreach (Collider nearbyObject in colliders)
             {
-                  killCount++;
-                  //  Destroy(nearbyObject, .5f);
+                        if(nearbyObject.CompareTag("Balloon")){
+                                killCount++;
+                        }
+
                   Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
+
                   if (rb != null){
                         rb.AddExplosionForce(force, transform.position, radius);
                         Destroy(rb.gameObject, .5f);
@@ -59,9 +48,8 @@ public class SpecialWeapon : MonoBehaviour
                  
             }
 
-
-            // Debug.Log("________________________Explode");
-              Score.totalPops =  Score.totalPops + killCount;
+              Score.totalPops = Score.totalPops + killCount; 
+            DisplayText.ballonPopCount =  DisplayText.ballonPopCount + killCount;
               this.transform.localScale = new Vector3(0,0,0);
             Destroy(gameObject, 2.5f);
       }

@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class DisplayText : MonoBehaviour
 {
 
-    public TextMeshPro ballonsText;
-     private int ballonPopCount = 0;
+    public TextMeshPro popsThisLevel;
+     public static int ballonPopCount = 0;
     public static int popsLastRound;
 
 
@@ -22,7 +22,7 @@ public class DisplayText : MonoBehaviour
 
 //     Debug.Log("++++++++++++++++ DisplayText Update called. Score.bummersLeft: " + Score.bummersLeft);
 
-        ballonsText.text = ballonPopCount.ToString();
+        popsThisLevel.text = ballonPopCount.ToString();
 
             //  Debug.Log("---------------------------bummersLeft" + Score.bummersLeft);
  
