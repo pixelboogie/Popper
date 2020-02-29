@@ -19,14 +19,17 @@ public class Spawner : MonoBehaviour
       // Update is called once per frame
       void Update()
       {
-            // if (enemySpawned == false)
-            {
-                  spawnDelay -= Time.deltaTime;
 
+            spawnDelay -= Time.deltaTime;
+
+
+            // if we have less than 10 bummers
+            if (Score.bummersLeft < 10)
+            {
                   if (spawnDelay < 0)
                   {
                         var friendly = Instantiate(specialEnemy, enemyLocation.position, enemyLocation.transform.rotation);
-                        // enemySpawned = true;
+                        // GameVariables.bummers--;
                         spawnDelay = spawnInterval;
                   }
             }

@@ -42,8 +42,9 @@ public class Ballon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+          ColorBallons();
         MoveBallon();
-        ColorBallons();
+        
 
     }
 
@@ -103,8 +104,13 @@ public class Ballon : MonoBehaviour
         if (nextWayPointIndex == lastWayPointIndex && Vector3.Distance(transform.position, lastWayPoint) < 0.5f)
         {
 
+            //  Debug.Log("++++++++++++++++ Ballon at Finish called");
+
             dieSound.GetComponent<DieSound>().PlayDie();
-            ballonCountDisplay.GetComponent<DisplayText>().LivesDecrease();
+            // ballonCountDisplay.GetComponent<DisplayText>().LivesDecrease();
+            // Score.bummers++;
+            GameVariables.bummers++;
+
             Destroy(this.gameObject);
 
         }

@@ -95,16 +95,25 @@ public class SpecialEnemy : MonoBehaviour
 
       private void explode()
       {
+
+            Debug.Log("++++++++++++++++ explode called");
             
             if (!alreadyExploded)
             {
+
+                  
+                              Debug.Log("++++++++++++++++ explode if statement called");
+
+                  
+                  
+                  
                   alreadyExploded = true;
                   source.PlayOneShot(clip);
 
-                  if (Score.bummersLeft < 10)
-                  {
-                        Score.bummersLeft++;
-                  }
+                  // if (Score.bummersLeft < 10)
+                  // {
+                        GameVariables.bummers--;
+                  // }
                   // Debug.Log("________________________Explode");
                   // Score.totalPops = Score.totalPops + killCount;
                   // DisplayText.ballonPopCount = Score.totalPops + killCount;
