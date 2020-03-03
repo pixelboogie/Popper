@@ -21,7 +21,8 @@ public class PauseMenu : MonoBehaviour
       // Update is called once per frame
       void Update()
       {
-            if (OVRInput.GetDown(OVRInput.RawButton.X))
+            // if (OVRInput.GetDown(OVRInput.RawButton.X))
+            if (OVRInput.GetDown(OVRInput.RawButton.Start))
             // if ((OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.Touch) > .8) && (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger, OVRInput.Controller.Touch) > .8))
             {
                   if (gameIsPaused)

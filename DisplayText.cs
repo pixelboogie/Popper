@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class DisplayText : MonoBehaviour
 {
 
-    public TextMeshPro popsThisLevel;
-     public static int ballonPopCount = 0;
+    public TextMeshPro popsThisLevelText;
+    public static int popsThisLevel;
+     public static int ballonPopCount;
     public static int popsLastRound;
 
 
@@ -17,12 +18,19 @@ public class DisplayText : MonoBehaviour
 
       private bool alreadyRan = false; // to stop it from adding multiple levels completed
 
+
+    void Start()
+    {
+          popsThisLevel=0;
+    }
+
+
     void Update()
     {
 
 //     Debug.Log("++++++++++++++++ DisplayText Update called. Score.bummersLeft: " + Score.bummersLeft);
 
-        popsThisLevel.text = ballonPopCount.ToString();
+        popsThisLevelText.text = popsThisLevel.ToString();
 
             //  Debug.Log("---------------------------bummersLeft" + Score.bummersLeft);
  
@@ -42,16 +50,16 @@ public class DisplayText : MonoBehaviour
 
             //      Debug.Log("++++++++++++++++ BallonPopIncrease called");
 
-        ballonPopCount++;
+        popsThisLevel++;
 
-      if((ballonPopCount >= maxBalloons) && (alreadyRan == false)){
+      if((popsThisLevel >= maxBalloons) && (alreadyRan == false)){
 
             // Debug.Log("++++++++++++++++ BallonPopIncrease if statement ");
 
             alreadyRan = true;
             // Debug.Log("Got them all");
             Score.myLevels++; // count the level as completed
-            Score.popsLastLevel = ballonPopCount; 
+            Score.popsLastLevel = popsThisLevel; 
             levelIndex = SceneManager.GetActiveScene ().buildIndex + 1;
             SceneManager.LoadScene (levelIndex);
       }

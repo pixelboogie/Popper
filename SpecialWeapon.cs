@@ -49,7 +49,7 @@ public class SpecialWeapon : MonoBehaviour
             }
 
               Score.totalPops = Score.totalPops + killCount; 
-            DisplayText.ballonPopCount =  DisplayText.ballonPopCount + killCount;
+            DisplayText.popsThisLevel =  DisplayText.popsThisLevel + killCount;
               this.transform.localScale = new Vector3(0,0,0);
             Destroy(gameObject, 2.5f);
       }
