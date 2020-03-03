@@ -12,6 +12,11 @@ public class Score : MonoBehaviour
       public static int popsLastLevel = 0;
       public static int myLevels = 0;
 
+
+      public static int scoreCalculation;
+
+
+
       private int bummersAllowed = 10;
       // public static int bummers = 0;
       public static int bummersLeft;
@@ -82,7 +87,8 @@ public class Score : MonoBehaviour
                   bl = bummersLeft;
             }
 
-            int scoreCalculation = ml * tp * bl;
+            // int scoreCalculation = ml * tp * bl;
+              scoreCalculation = ml * tp * bl;
             FinalScoreText.text = scoreCalculation.ToString();
 
 
