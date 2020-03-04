@@ -20,6 +20,20 @@ public class HappyFaceDartgun : MonoBehaviour
 
       private int magCapacityBoost = 10; // how much to increase magcapacity if popped
 
+
+      // ------------------------------------
+
+      private bool alreadyExploded = false;
+
+      public AudioSource source;
+      public AudioClip nonTargetDieClip;
+
+      public GameObject myAnimatorObject;
+      Animator myAnimator;
+
+      private bool resetAnim = false;
+
+
       void Start()
       {
 
@@ -30,6 +44,8 @@ public class HappyFaceDartgun : MonoBehaviour
             nonTargetScript = nonTargetObject.GetComponent<NonTarget>();
 
             startPosition = transform.position;
+
+            myAnimator = GetComponent<Animator>();
 
       }
 
@@ -57,8 +73,51 @@ public class HappyFaceDartgun : MonoBehaviour
                   referenceScript.loadedRounds = referenceScript.magCapacity;  // and reload the gun
 
                   referenceScript.updateAmmoText();
-                  nonTargetScript.playDie();
-                  Destroy(this.gameObject);
+                  // nonTargetScript.playDie();
+                  // Destroy(this.gameObject);
+
+                    explode();
             }
       }
+
+         private void explode()
+      {
+
+            // Debug.Log("++++++++++++++++ explode called");
+
+            if (!alreadyExploded)
+            {
+
+
+                  // Debug.Log("++++++++++++++++ explode if statement called");
+
+
+
+
+                  alreadyExploded = true;
+
+                  source.PlayOneShot(nonTargetDieClip);
+
+                  // Debug.Log("________________________Explode");
+
+                  playDie();
+
+            }
+      }
+
+      public void playDie()
+      {
+            // Debug.Log("------------------------ playDie ");
+
+            myAnimator.SetBool("AnimeDie", true);
+
+      }
+
+      public void destoryIt()
+      {
+            // Debug.Log("------------------------ destoryIt ");
+            Destroy(gameObject);
+      }
+
+
 }

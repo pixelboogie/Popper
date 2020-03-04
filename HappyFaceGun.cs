@@ -8,8 +8,8 @@ public class HappyFaceGun : MonoBehaviour
       public TextMeshPro ammoText;
       GameObject referenceObject;
       Gun referenceScript;
-      GameObject nonTargetObject;
-      NonTarget nonTargetScript;
+      // GameObject nonTargetObject;
+      // NonTarget nonTargetScript;
       private Vector3 startPosition;
       public float throttle = 1.5f; // speed it rises
       float dist; // track dist balloon goes up before destroying it
@@ -18,12 +18,14 @@ public class HappyFaceGun : MonoBehaviour
 
       private int magCapacityBoost = 10; // how much to increase magcapacity if popped
 
+
+  // ------------------------------------
  private bool alreadyExploded = false;
 
       public AudioSource source;
    public AudioClip nonTargetDieClip;
 
-      // ------------------------------------
+    
       public GameObject myAnimatorObject;
       Animator myAnimator;
 
@@ -40,8 +42,8 @@ public class HappyFaceGun : MonoBehaviour
             referenceObject = GameObject.FindWithTag("ObjectOne");
             referenceScript = referenceObject.GetComponent<Gun>();
 
-            nonTargetObject = GameObject.FindWithTag("nonTarget");
-            nonTargetScript = nonTargetObject.GetComponent<NonTarget>();
+            // nonTargetObject = GameObject.FindWithTag("nonTarget");
+            // nonTargetScript = nonTargetObject.GetComponent<NonTarget>();
 
             startPosition = transform.position;
 
@@ -71,7 +73,7 @@ public class HappyFaceGun : MonoBehaviour
                   referenceScript.loadedRounds = referenceScript.magCapacity;  // and reload the gun
 
                   referenceScript.updateAmmoText();
-                  nonTargetScript.playDie();
+                  // nonTargetScript.playDie();
                   // Destroy(this.gameObject);
                   explode();
             }
