@@ -10,18 +10,37 @@ public class ammoCollision3 : MonoBehaviour
 
         public AudioSource source; 
 
+  public  GameObject myAnimatorObject;
+      Animator myAnimator;
 
+      private bool resetAnim = false;
+      private float waitTime = .3f;
 
-      // Start is called before the first frame update
+  
       void Start()
       {
             referenceObject = GameObject.FindWithTag("ObjectOne");
             referenceScript = referenceObject.GetComponent<Gun>();
+
+             myAnimator = myAnimatorObject.GetComponent<Animator>();
       }
 
-      // Update is called once per frame
+  
       void Update()
       {
+
+            if (resetAnim)
+            {
+
+                  waitTime -= Time.deltaTime;
+
+                  if (waitTime < 0)
+                  {
+                         myAnimator.SetBool("ShowAmmoAnim", false);
+                        resetAnim = false;
+
+                  }
+            }
 
       }
 
@@ -29,11 +48,11 @@ public class ammoCollision3 : MonoBehaviour
 
       private void OnTriggerEnter(Collider other)
       {
-
             if (other.CompareTag("Player"))
             {
-                  // Debug.Log("*********************************************** Colllision ");
-                  // Time.timeScale = 0;
+                  myAnimator.SetBool("ShowAmmoAnim", true);
+                  resetAnim = true;
+                  waitTime = .3f;
 
                   referenceScript.carryRounds = referenceScript.carryCapacity;  // fill up carried round
                   referenceScript.loadedRounds = referenceScript.magCapacity; // fill up loaded rounds
@@ -45,4 +64,16 @@ public class ammoCollision3 : MonoBehaviour
             }
       }
 
+      private void OnTriggerExit(Collider other)
+      {
+
+            if (other.CompareTag("Player"))
+            {
+                  myAnimator.SetBool("ShowAmmoAnim", false);
+                    waitTime = .3f;
+            }
+
+      }
+
 }
+
