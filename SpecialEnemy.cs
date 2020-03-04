@@ -15,14 +15,24 @@ public class SpecialEnemy : MonoBehaviour
 
       private Material m_Material;
 
-      private Vector3 endPosition = new Vector3(0, 20, -25);
+      private Vector3 endPosition = new Vector3(0, 20, 25);
 
       private bool alreadyExploded = false;
 
-      // Start is called before the first frame update
+      // ------------------------------------
+      public GameObject myAnimatorObject;
+      Animator myAnimator;
+
+      private bool resetAnim = false;
+      private float waitTime = .1f;
+
+
+
       void Start()
       {
             m_Material = GetComponent<Renderer>().material;
+
+               myAnimator = GetComponent<Animator>();
       }
 
       void Update()
@@ -30,7 +40,7 @@ public class SpecialEnemy : MonoBehaviour
 
             float dist = Vector3.Distance(endPosition, transform.position);
             //     if(transform.position != endPosition){
-            transform.Translate(Vector3.forward * Time.deltaTime * throttle);
+            transform.Translate(Vector3.back * Time.deltaTime * throttle);
             //   transform.Translate(Vector3.forward * Time.deltaTime);
             // Debug.Log("____________________   dist: " + dist);
             // }
@@ -40,6 +50,27 @@ public class SpecialEnemy : MonoBehaviour
             }
 
             ColorBallons();
+
+
+
+            
+            // if (resetAnim)
+            // {
+            //             Debug.Log("------------------------ resetAnim ");
+            //       waitTime -= Time.deltaTime;
+
+            //       if (waitTime < 0)
+            //       {
+
+            //                Debug.Log("------------------------ waitTime ");
+            //             myAnimator.SetBool("AnimeDie", false);
+            //             resetAnim = false;
+
+            //       }
+            // }
+
+
+
 
       }
 
@@ -114,12 +145,45 @@ public class SpecialEnemy : MonoBehaviour
                   // {
                         GameVariables.bummers--;
                   // }
-                  // Debug.Log("________________________Explode");
-                  // Score.totalPops = Score.totalPops + killCount;
-                  // DisplayText.ballonPopCount = Score.totalPops + killCount;
-                  this.transform.localScale = new Vector3(0, 0, 0);
-                  Destroy(gameObject, 1.5f);
+                  Debug.Log("________________________Explode");
+                  //    this.transform.localScale = new Vector3(0, 0, 0);
+                  // Destroy(gameObject, 2.5f);
                   // Destroy(gameObject);
+
+
+                  playDie();
+                        
             }
       }
+
+
+            public void playDie()
+      {
+
+            Debug.Log("------------------------ playDie ");
+
+            myAnimator.SetBool("AnimeDie", true);
+            // waitTime = .3f;
+            // resetAnim = true;
+
+           
+      }
+
+
+// public void playNormal(){
+
+//           Debug.Log("------------------------ playNormal ");
+//           myAnimator.SetBool("AnimeDie", false);
+// }
+
+
+public void destoryIt(){
+
+          Debug.Log("------------------------ destoryIt ");
+      //     myAnimator.SetBool("AnimeDie", false);
+       Destroy(gameObject);
+}
+
+ 
+
 }
