@@ -14,17 +14,7 @@ public class NonTarget : MonoBehaviour
 
       public AudioSource source;
       public AudioClip nonTargetClip;
-      public AudioClip nonTargetDieClip;
-
-
-
-      // ------------------------------------
-      public GameObject myAnimatorObject;
-      Animator myAnimator;
-
-      private bool resetAnim = false;
-      private float waitTime = .3f;
-
+      // public AudioClip nonTargetDieClip;
 
 
       // Start is called before the first frame update
@@ -32,8 +22,7 @@ public class NonTarget : MonoBehaviour
       {
             // var friendly = Instantiate(friendlyPrefab, friendlyLocation.position, friendlyLocation.transform.rotation);
 
-            myAnimator = myAnimatorObject.GetComponent<Animator>();
-
+                  
       }
 
       // Update is called once per frame
@@ -63,28 +52,6 @@ public class NonTarget : MonoBehaviour
             // }
 
 
-
-            if (resetAnim)
-            {
-                        Debug.Log("------------------------ resetAnim ");
-                  waitTime -= Time.deltaTime;
-
-                  if (waitTime < 0)
-                  {
-
-                           Debug.Log("------------------------ waitTime ");
-                        myAnimator.SetBool("AnimateIt", false);
-                        resetAnim = false;
-
-                  }
-            }
-
-
-
-
-
-
-
       }
 
 
@@ -101,11 +68,11 @@ public class NonTarget : MonoBehaviour
 
               Debug.Log("------------------------ playDie ");
 
-            myAnimator.SetBool("AnimateIt", true);
-            waitTime = .3f;
-            resetAnim = true;
+            // myAnimator.SetBool("AnimateIt", true);
+            // waitTime = .3f;
+            // resetAnim = true;
 
-            source.PlayOneShot(nonTargetDieClip);
+            // source.PlayOneShot(nonTargetDieClip);
       }
 
 
