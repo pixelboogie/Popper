@@ -54,7 +54,7 @@ public class Pauser : MonoBehaviour
       void pauseIt()
       {
 
-            Debug.Log("----------------- stop it");
+            // Debug.Log("----------------- stop it");
 
             // pauseMenuUI.SetActive(true);
             // gameIsPaused = true;
@@ -75,7 +75,7 @@ public class Pauser : MonoBehaviour
 
             if(gameIsPaused){
 
-            Debug.Log("----------------- play it");
+            // Debug.Log("----------------- play it");
             waitTime = 5f;
             // pauseMenuUI.SetActive(false);
             gameIsPaused = false;

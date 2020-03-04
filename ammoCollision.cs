@@ -8,15 +8,22 @@ public class ammoCollision : MonoBehaviour
       GameObject referenceObject;
       DartGun referenceScript;
 
-        public AudioSource source; 
+      public AudioSource source;
 
-
+      GameObject myAnimatorObject;
+      AnimAmmo myAnimatorScript;
 
       // Start is called before the first frame update
       void Start()
       {
             referenceObject = GameObject.FindWithTag("ObjectOne");
             referenceScript = referenceObject.GetComponent<DartGun>();
+
+            myAnimatorObject = GameObject.FindWithTag("AnimAmmo");
+            myAnimatorScript = myAnimatorObject.GetComponent<AnimAmmo>();
+                  //  myAnimator = GetComponent<Animator>();
+                  //   myAnimator = myAnimatorObject.GetComponent<AnimAmmo>();
+                   
       }
 
       // Update is called once per frame
@@ -32,7 +39,9 @@ public class ammoCollision : MonoBehaviour
 
             if (other.CompareTag("Player"))
             {
-                  // Debug.Log("*********************************************** Colllision ");
+
+                     myAnimatorScript.playAnim();
+                  Debug.Log("*********************************************** Colllision ");
                   // Time.timeScale = 0;
 
                   referenceScript.carryRounds = referenceScript.carryCapacity;  // fill up carried round
@@ -41,6 +50,8 @@ public class ammoCollision : MonoBehaviour
                   referenceScript.updateAmmoText();
 
                   source.Play();
+// 
+              
 
             }
       }
