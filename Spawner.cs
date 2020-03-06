@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
       public GameObject specialEnemy; // which prefab we will be spawning
       public Transform enemyLocation; // the location we will spawn the friendly
-      public float spawnDelay = 8.0f; // time to remain before spawning
+      public float spawnDelay = 1.0f; // time to remain before spawning
       public float spawnInterval = 30.0f; // time to remain before spawning
 
       // private bool enemySpawned = false;
@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
 
 
             // if we have less than 10 bummers
-            if (Score.bummersLeft < 10)
+            // if (Score.bummersLeft < 10)
             {
                   if (spawnDelay < 0)
                   {

@@ -12,10 +12,16 @@ public class PauseMenu : MonoBehaviour
       // Gun referenceScript;
 
 
+      GameObject referenceObject;
+      SoundTrack referenceScript;
+
+
+
       // Start is called before the first frame update
       void Start()
       {
-
+            referenceObject = GameObject.FindWithTag("Soundtrack");
+            referenceScript = referenceObject.GetComponent<SoundTrack>();
       }
 
       // Update is called once per frame
@@ -43,10 +49,10 @@ public class PauseMenu : MonoBehaviour
             gameIsPaused = true;
             Time.timeScale = 0f;
 
-            // referenceObject = GameObject.FindWithTag("ObjectOne");
-            // referenceScript = referenceObject.GetComponent<Gun>();
-            // referenceScript.SetActive(true);
-
+            if (GameVariables.musicOn)
+            {
+                  referenceScript.PauseMusic();
+            }
 
       }
 
@@ -56,6 +62,10 @@ public class PauseMenu : MonoBehaviour
             gameIsPaused = false;
             Time.timeScale = 1f;
 
+            if (GameVariables.musicOn)
+            {
+                  referenceScript.UnPauseMusic();
+            }
             // referenceObject = GameObject.FindWithTag("ObjectOne");
             // referenceScript = referenceObject.GetComponent<Gun>();
             // referenceScript.SetActive(false);

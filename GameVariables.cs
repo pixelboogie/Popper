@@ -17,6 +17,6 @@ public class GameVariables : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("++++++++++++++++GameVariables Update bummers: " + bummers);
+      //   Debug.Log("++++++++++++++++GameVariables Update bummers: " + bummers);
     }
 }

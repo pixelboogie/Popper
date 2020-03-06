@@ -16,7 +16,7 @@ public class HappyFace : MonoBehaviour
       NonTarget nonTargetScript;
       private Vector3 startPosition;
       // private Vector3 endPosition = new Vector3(0, 25, 0);
-      public float throttle = .3f; // speed it rises
+      public float throttle = .5f; // speed it rises
 
       float dist; // track dist balloon goes up before destroying it
 
