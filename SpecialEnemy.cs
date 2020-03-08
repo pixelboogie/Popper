@@ -9,13 +9,15 @@ public class SpecialEnemy : MonoBehaviour
       public AudioSource source;
       public AudioClip clip;
 
-      public float throttle = 2f;
+      public float throttle = 5f;
 
       public int health = 10;
 
       private Material m_Material;
 
-      private Vector3 endPosition = new Vector3(0, 20, 25);
+      // public Vector3 endPosition = new Vector3(0, 20, 25);
+ 
+
 
       private bool alreadyExploded = false;
 
@@ -24,7 +26,7 @@ public class SpecialEnemy : MonoBehaviour
       Animator myAnimator;
 
       private bool resetAnim = false;
-      private float waitTime = .1f;
+      private float waitTime = 30.0f;
 
 
 
@@ -34,78 +36,31 @@ public class SpecialEnemy : MonoBehaviour
 
                myAnimator = GetComponent<Animator>();
       }
-
       void Update()
       {
 
-            float dist = Vector3.Distance(endPosition, transform.position);
+            // float dist = Vector3.Distance(endPosition, transform.position);
             //     if(transform.position != endPosition){
             transform.Translate(Vector3.right * Time.deltaTime * throttle);
             //   transform.Translate(Vector3.forward * Time.deltaTime);
             // Debug.Log("____________________   dist: " + dist);
             // }
-            if (dist > 80)
-            {
-                  Destroy(gameObject);
-            }
-
-            // ColorBallons();
-
-
-
-            
-            // if (resetAnim)
+            // if (dist > 80)
             // {
-            //             Debug.Log("------------------------ resetAnim ");
-            //       waitTime -= Time.deltaTime;
-
-            //       if (waitTime < 0)
-            //       {
-
-            //                Debug.Log("------------------------ waitTime ");
-            //             myAnimator.SetBool("AnimeDie", false);
-            //             resetAnim = false;
-
-            //       }
+            //       Destroy(gameObject);
             // }
 
+                  waitTime -= Time.deltaTime;
 
+                  if (waitTime < 0)
+                  {
+                        //    Debug.Log("------------------------ waitTime ");
+                        Destroy(gameObject);
 
+                  }
 
       }
-
-
-      // private void ColorBallons()
-      // {
-
-      //       if (health == 20)
-      //       {
-      //             m_Material.color = Color.black;
-      //       }
-
-      //       if (health == 17)
-      //       {
-      //             m_Material.color = Color.gray;
-      //       }
-
-      //       if (health == 14)
-      //       {
-      //             m_Material.color = Color.cyan;
-      //       }
-
-      //       if (health == 10)
-      //       {
-      //             m_Material.color = Color.red;
-      //       }
-      //       else if (health == 7)
-      //       {
-      //             m_Material.color = Color.blue;
-      //       }
-      //       else if (health == 3)
-      //       {
-      //             m_Material.color = Color.green;
-      //       }
-      // }
+      
 
       private void OnTriggerEnter(Collider other)
       {
@@ -127,29 +82,20 @@ public class SpecialEnemy : MonoBehaviour
       private void explode()
       {
 
-            Debug.Log("++++++++++++++++ explode called");
+            // Debug.Log("++++++++++++++++ explode called");
             
             if (!alreadyExploded)
             {
-
-                  
-                              Debug.Log("++++++++++++++++ explode if statement called");
-
-                  
-                  
+                              // Debug.Log("++++++++++++++++ explode if statement called");
                   
                   alreadyExploded = true;
                   source.PlayOneShot(clip);
 
-                  // if (Score.bummersLeft < 10)
-                  // {
+                  if (Score.bummersLeft < 10)
+                  {
                         GameVariables.bummers--;
-                  // }
-                  Debug.Log("________________________Explode");
-                  //    this.transform.localScale = new Vector3(0, 0, 0);
-                  // Destroy(gameObject, 2.5f);
-                  // Destroy(gameObject);
-
+                  }
+ 
 
                   playDie();
                         
@@ -159,31 +105,17 @@ public class SpecialEnemy : MonoBehaviour
 
             public void playDie()
       {
-
-            Debug.Log("------------------------ playDie ");
-
+            // Debug.Log("------------------------ playDie ");
             myAnimator.SetBool("AnimeDie", true);
             // waitTime = .3f;
             // resetAnim = true;
-
-           
       }
 
 
-// public void playNormal(){
-
-//           Debug.Log("------------------------ playNormal ");
-//           myAnimator.SetBool("AnimeDie", false);
-// }
-
 
 public void destoryIt(){
-
-          Debug.Log("------------------------ destoryIt ");
+      //     Debug.Log("------------------------ destoryIt ");
       //     myAnimator.SetBool("AnimeDie", false);
        Destroy(gameObject);
 }
-
- 
-
 }

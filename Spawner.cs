@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
 
 
             // if we have less than 10 bummers
-            // if (Score.bummersLeft < 10)
+            if (Score.bummersLeft < 10)
             {
                   if (spawnDelay < 0)
                   {

@@ -15,9 +15,11 @@ public class SpecialWeapon : MonoBehaviour
       public AudioClip clip;
 
 
+ // ------------------------------------
+
       // public GameObject myAnimatorObject;
       // GameObject myAnimatorObject;
-      // Animator myAnimator;
+      Animator myAnimator;
 
 
       // private bool resetAnim = false;
@@ -29,7 +31,7 @@ public class SpecialWeapon : MonoBehaviour
             // myAnimatorObject = GameObject.FindWithTag("AnimSpecWeap");
             // myAnimatorObject = myAnimatorObject;
             // myAnimator = myAnimatorObject.GetComponent<Animator>();
-
+             myAnimator = GetComponent<Animator>();
       }
 
 
@@ -98,8 +100,28 @@ public class SpecialWeapon : MonoBehaviour
 
             Score.totalPops = Score.totalPops + killCount;
             DisplayText.popsThisLevel = DisplayText.popsThisLevel + killCount;
-            this.transform.localScale = new Vector3(0, 0, 0);  
-            Destroy(gameObject, 2.5f);
+            // this.transform.localScale = new Vector3(0, 0, 0);  
+            // Destroy(gameObject, 2.5f);
+
+                    playDie();
       }
+
+
+  public void playDie()
+      {
+            // Debug.Log("------------------------ playDie ");
+
+            myAnimator.SetBool("AnimeDie", true);
+
+      }
+
+      public void destoryIt()
+      {
+            // Debug.Log("------------------------ destoryIt ");
+            Destroy(gameObject);
+      }
+
+
+
 
 }
