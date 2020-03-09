@@ -32,8 +32,8 @@ public class ReplayOrQuit : MonoBehaviour
                   Score.myLevels = 0; // reset the levels
                   GameVariables.bummers = 0;
 
-                  Debug.Log("*********************************************** I REPLAYED "); 
-                  UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/Scene1");
+                  // Debug.Log("*********************************************** I REPLAYED "); 
+                  UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/01");
 
                   // GameObject LL = GameObject.Find ("LevelLoader");
                   // LevelLoader LLScript = LL.GetComponent<LevelLoader> ();
@@ -45,7 +45,7 @@ public class ReplayOrQuit : MonoBehaviour
             if (other.CompareTag("DoorExit"))
             {
 
-                  Debug.Log("************************************************* I QUIT "); 
+                  // Debug.Log("************************************************* I QUIT "); 
 
 
                   // save any game data here
