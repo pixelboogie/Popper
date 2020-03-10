@@ -12,6 +12,8 @@ public class LevelLabelText : MonoBehaviour
 
       public TextMeshPro levelText;
 
+      
+
     void Start()
     {
         thisLevelNum = SceneManager.GetActiveScene ().buildIndex/2;

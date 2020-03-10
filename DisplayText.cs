@@ -40,7 +40,7 @@ public class DisplayText : MonoBehaviour
             // UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             // UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
       //      SceneManager.LoadScene("EndSceneLose");
-       SceneManager.LoadScene("EndScene");
+       SceneManager.LoadScene("EndSceneLose");
   
         }
     }
