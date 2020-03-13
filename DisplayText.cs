@@ -18,10 +18,17 @@ public class DisplayText : MonoBehaviour
 
       private bool alreadyRan = false; // to stop it from adding multiple levels completed
 
+  public  GameObject myAnimatorObject;
+  Animator myAnimator;
+
+  private bool alreadyFaded = false; // have we faded in yet
+        private float waitTime = 1f; // time to wait before fading in
 
     void Start()
     {
           popsThisLevel=0;
+            myAnimator = myAnimatorObject.GetComponent<Animator>();
+            
     }
 
 
@@ -43,6 +50,22 @@ public class DisplayText : MonoBehaviour
        SceneManager.LoadScene("EndSceneLose");
   
         }
+
+
+        if(!alreadyFaded){
+
+
+              waitTime -= Time.deltaTime;
+
+                  if (waitTime <= 0)
+                  {
+                      
+                      fadeIn();
+                     
+
+                  }
+                  }
+
     }
 
     public void BallonPopIncrease()
@@ -54,14 +77,16 @@ public class DisplayText : MonoBehaviour
 
       if((popsThisLevel >= maxBalloons) && (alreadyRan == false)){
 
-            // Debug.Log("++++++++++++++++ BallonPopIncrease if statement ");
+            Debug.Log("++++++++++++++++ BallonPopIncrease if statement ");
 
             alreadyRan = true;
             // Debug.Log("Got them all");
             Score.myLevels++; // count the level as completed
             Score.popsLastLevel = popsThisLevel; 
-            levelIndex = SceneManager.GetActiveScene ().buildIndex + 1;
-            SceneManager.LoadScene (levelIndex);
+
+      // myAnimator.playIntersceneOver();
+      // myAnimator.Play("")
+       myAnimator.SetTrigger("playIntersceneFadeIn");
       }
 
     }
@@ -71,6 +96,24 @@ public class DisplayText : MonoBehaviour
       //      Debug.Log("++++++++++++++++ LivesDecrease called");
       //   GameVariables.bummers++;
     }
+
+
+
+    public void goNextLevel()
+    {
+                   Debug.Log("++++++++++++++++ goNextLevel called");
+      levelIndex = SceneManager.GetActiveScene ().buildIndex + 1;
+
+            SceneManager.LoadScene (levelIndex);
+    }
+
+
+    private void fadeIn(){
+   alreadyFaded = true;
+    myAnimator.SetTrigger("playIntersceneFadeOut");  // when we start, fade out the sphere
+    }
+
+
 
   
 }
