@@ -47,6 +47,9 @@ public class DisplayText : MonoBehaviour
             // UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             // UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
       //      SceneManager.LoadScene("EndSceneLose");
+
+     Score.popsLastLevel = popsThisLevel; ///add this to make it display on game over scene
+
        SceneManager.LoadScene("EndSceneLose");
   
         }

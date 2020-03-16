@@ -59,7 +59,7 @@ public class BalloonNext : MonoBehaviour
 
       public void goNextLevel()
       {
-            Debug.Log("++++++++++++++++ goNextLevel called");
+            // Debug.Log("++++++++++++++++ goNextLevel called");
             levelIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
             SceneManager.LoadScene(levelIndex);
@@ -69,7 +69,7 @@ public class BalloonNext : MonoBehaviour
       private void fadeIn()
       {
             alreadyFaded = true;
-            myAnimator.SetTrigger("playIntersceneFadeOut");  // when we start, fade out the sphere
+            myAnimator.SetTrigger("playIntersceneFadeOut");  // when we start, fade out the spheres
       }
 
 

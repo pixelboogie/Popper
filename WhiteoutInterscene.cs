@@ -26,7 +26,7 @@ public class WhiteoutInterscene : MonoBehaviour
 
       public void goNextLevel()
       {
-            Debug.Log("++++++++++++++++ goNextLevel called");
+            // Debug.Log("++++++++++++++++ goNextLevel called");
             levelIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
             SceneManager.LoadScene(levelIndex);
