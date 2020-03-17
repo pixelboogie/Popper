@@ -18,9 +18,9 @@ public class BalloonRestart : MonoBehaviour
                   this.transform.localScale = new Vector3(0, 0, 0);
 
                   // reset the stats if we replay
-                  Score.totalPops = 0; 
-                  Score.myLevels = 0; 
-                  GameVariables.bummers = 0;
+                  // Score.totalPops = 0; 
+                  // Score.myLevels = 0; 
+                  // GameVariables.bummers = 0;
 
                   SceneManager.LoadScene("Scenes/01");
             }

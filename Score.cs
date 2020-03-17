@@ -10,6 +10,8 @@ public class Score : MonoBehaviour
 
       public static int totalPops = 0;
       public static int popsLastLevel = 0;
+      
+      public static int popsRemaining;
       public static int myLevels = 0;
 
 
@@ -32,12 +34,15 @@ public class Score : MonoBehaviour
 
       public TextMeshPro PopsLastLevelText;
 
+      
+      public TextMeshPro popsRemainingText;
+
       private int ml = 1; // minimum for score calc
       private int tp = 1; // minimum for score calc
       private int bl = 1; // minimum for score calc
 
 
-      
+
 
 
       // Start is called before the first frame update
@@ -63,6 +68,8 @@ public class Score : MonoBehaviour
             BummersText.text = GameVariables.bummers.ToString();
             // BummersText.text = bummersLeft.ToString();
             PopsLastLevelText.text = popsLastLevel.ToString();
+
+            popsRemainingText.text = popsRemaining.ToString();
 
             if (myLevels <= 1)
             {

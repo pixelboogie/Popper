@@ -38,6 +38,7 @@ public class DisplayText : MonoBehaviour
             //     Debug.Log("++++++++++++++++ DisplayText Update called. Score.bummersLeft: " + Score.bummersLeft);
 
             popsThisLevelText.text = popsThisLevel.ToString();
+                Score.popsRemaining = maxBalloons - popsThisLevel; // xxx
 
             //  Debug.Log("---------------------------bummersLeft" + Score.bummersLeft);
 
@@ -49,6 +50,7 @@ public class DisplayText : MonoBehaviour
                   //      SceneManager.LoadScene("EndSceneLose");
 
                   Score.popsLastLevel = popsThisLevel; ///add this to make it display on game over scene
+              
 
                   SceneManager.LoadScene("EndSceneLose");
 
