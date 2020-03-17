@@ -15,7 +15,7 @@ public class SpecialWeapon : MonoBehaviour
       public AudioClip clip;
 
 
- // ------------------------------------
+      // ------------------------------------
 
       // public GameObject myAnimatorObject;
       // GameObject myAnimatorObject;
@@ -25,13 +25,27 @@ public class SpecialWeapon : MonoBehaviour
       // private bool resetAnim = false;
       // private float waitTime = .3f;
 
+      // ------------------------------------
+      private GameObject referenceObject;
+      private DisplayText referenceScript;
+
+
+                  private int difference = 0;
+
 
       void Start()
       {
             // myAnimatorObject = GameObject.FindWithTag("AnimSpecWeap");
             // myAnimatorObject = myAnimatorObject;
             // myAnimator = myAnimatorObject.GetComponent<Animator>();
-             myAnimator = GetComponent<Animator>();
+            myAnimator = GetComponent<Animator>();
+
+
+            referenceObject = GameObject.FindWithTag("BallonCountDisplay");
+            referenceScript = referenceObject.GetComponent<DisplayText>();
+
+
+
       }
 
 
@@ -98,16 +112,53 @@ public class SpecialWeapon : MonoBehaviour
 
             }
 
-            Score.totalPops = Score.totalPops + killCount;
-            DisplayText.popsThisLevel = DisplayText.popsThisLevel + killCount;
-            // this.transform.localScale = new Vector3(0, 0, 0);  
-            // Destroy(gameObject, 2.5f);
 
-                    playDie();
+
+            // referenceScript
+
+
+            // Score.totalPops = Score.totalPops + killCount; // display total pops
+            DisplayText.popsThisLevel = DisplayText.popsThisLevel + killCount; // add killcount to the popsthis level
+
+            // if we're at or past the max
+            if (DisplayText.popsThisLevel >= referenceScript.maxBalloons)
+            {
+
+                  difference = DisplayText.popsThisLevel - referenceScript.maxBalloons;
+
+                  // set popsthislevel to max allowed
+                  DisplayText.popsThisLevel = referenceScript.maxBalloons;
+                
+                  // update the score to the max allowed
+                  Score.popsLastLevel = Score.popsLastLevel + referenceScript.maxBalloons;
+
+                       Score.totalPops = Score.totalPops + killCount - difference;
+
+                         Score.myLevels++; // count the level as completed
+
+                  // display text function can take us to the next scene
+                    referenceScript.playOutroAnim();
+
+            }
+            else
+            {
+
+              
+
+
+                  //otherwise, just udate the pops this level
+                  // DisplayText.popsThisLevel =  DisplayText.popsThisLevel + killCount;
+                          Score.totalPops = Score.totalPops + killCount;
+
+                  // this.transform.localScale = new Vector3(0, 0, 0);  
+                  // Destroy(gameObject, 2.5f);
+
+                  playDie();
+            }
       }
 
 
-  public void playDie()
+      public void playDie()
       {
             // Debug.Log("------------------------ playDie ");
 
