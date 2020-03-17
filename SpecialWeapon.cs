@@ -28,9 +28,14 @@ public class SpecialWeapon : MonoBehaviour
       // ------------------------------------
       private GameObject referenceObject;
       private DisplayText referenceScript;
+      private int difference = 0;
+      private bool alreadyRan = false; // to stop it from adding multiple levels completed
 
 
-                  private int difference = 0;
+      private GameObject referenceObject1;
+      private SpawnerSpecialWeapon referenceScript1;
+
+      // private int explodeCount;
 
 
       void Start()
@@ -43,6 +48,9 @@ public class SpecialWeapon : MonoBehaviour
 
             referenceObject = GameObject.FindWithTag("BallonCountDisplay");
             referenceScript = referenceObject.GetComponent<DisplayText>();
+
+               referenceObject1 = GameObject.FindWithTag("SpecialWeapon");
+            referenceScript1 = referenceObject1.GetComponent<SpawnerSpecialWeapon>();
 
 
 
@@ -88,72 +96,92 @@ public class SpecialWeapon : MonoBehaviour
 
       private void explode()
       {
-            killCount = 0;
 
-            Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-            // GameObject[] myObjects = Physics.OverlapSphere(transform.position, radius);
 
-            source.PlayOneShot(clip);
+            Debug.Log("----------------------explode called");
 
-            foreach (Collider nearbyObject in colliders)
+            if (alreadyRan == false)
             {
-                  if (nearbyObject.CompareTag("Balloon"))
+
+                       Debug.Log("----------------------alreadyRan == false");
+
+                  referenceScript1.weaponActive = false; // weapon exploded, so we can start the countdopwn for next spawn
+
+
+                  alreadyRan = true;
+
+                  killCount = 0;
+
+                  Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+                  // GameObject[] myObjects = Physics.OverlapSphere(transform.position, radius);
+
+                  source.PlayOneShot(clip);
+
+                  foreach (Collider nearbyObject in colliders)
                   {
-                        killCount++;
+                        if (nearbyObject.CompareTag("Balloon"))
+                        {
+                              killCount++;
+                        }
+
+                        Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
+
+                        if (rb != null)
+                        {
+                              rb.AddExplosionForce(force, transform.position, radius);
+                              Destroy(rb.gameObject, .5f);
+                        }
+
                   }
 
-                  Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
 
-                  if (rb != null)
+                  // Score.totalPops = Score.totalPops + killCount; // display total pops
+                  DisplayText.popsThisLevel = DisplayText.popsThisLevel + killCount; // add killcount to the popsthis level
+
+                  // if we're at or past the max
+                  if (DisplayText.popsThisLevel >= referenceScript.maxBalloons)
                   {
-                        rb.AddExplosionForce(force, transform.position, radius);
-                        Destroy(rb.gameObject, .5f);
+
+                        difference = DisplayText.popsThisLevel - referenceScript.maxBalloons;
+
+                        // set popsthislevel to max allowed
+                        DisplayText.popsThisLevel = referenceScript.maxBalloons;
+                        //   Score.popsThisLevel = referenceScript.maxBalloons;
+
+
+                        // update the score to the max allowed
+                        // Score.popsLastLevel = Score.popsLastLevel + referenceScript.maxBalloons;
+                        Score.popsLastLevel = referenceScript.maxBalloons;
+
+                        // Score.totalPops = Score.totalPops + killCount - difference;
+                        // Score.totalPops = Score.totalPops + referenceScript.maxBalloons;
+                        //  Score.totalPops =  Score.totalPops + DisplayText.popsThisLevel - difference;
+                          Score.totalPops = Score.totalPops + referenceScript.maxBalloons;
+
+
+
+                        Debug.Log("----------------------increment mylevels");
+                        Score.myLevels++; // count the level as completed
+
+                        // display text function can take us to the next scene
+                        referenceScript.playOutroAnim();
+
                   }
-
-            }
-
-
-
-            // referenceScript
+                  else
+                  {
 
 
-            // Score.totalPops = Score.totalPops + killCount; // display total pops
-            DisplayText.popsThisLevel = DisplayText.popsThisLevel + killCount; // add killcount to the popsthis level
-
-            // if we're at or past the max
-            if (DisplayText.popsThisLevel >= referenceScript.maxBalloons)
-            {
-
-                  difference = DisplayText.popsThisLevel - referenceScript.maxBalloons;
-
-                  // set popsthislevel to max allowed
-                  DisplayText.popsThisLevel = referenceScript.maxBalloons;
-                
-                  // update the score to the max allowed
-                  Score.popsLastLevel = Score.popsLastLevel + referenceScript.maxBalloons;
-
-                       Score.totalPops = Score.totalPops + killCount - difference;
-
-                         Score.myLevels++; // count the level as completed
-
-                  // display text function can take us to the next scene
-                    referenceScript.playOutroAnim();
-
-            }
-            else
-            {
-
-              
 
 
-                  //otherwise, just udate the pops this level
-                  // DisplayText.popsThisLevel =  DisplayText.popsThisLevel + killCount;
-                          Score.totalPops = Score.totalPops + killCount;
+                        //otherwise, just udate the pops this level
+                        // DisplayText.popsThisLevel =  DisplayText.popsThisLevel + killCount;
+                        // Score.totalPops = Score.totalPops + killCount;
 
-                  // this.transform.localScale = new Vector3(0, 0, 0);  
-                  // Destroy(gameObject, 2.5f);
+                        // this.transform.localScale = new Vector3(0, 0, 0);  
+                        // Destroy(gameObject, 2.5f);
 
-                  playDie();
+                        playDie();
+                  }
             }
       }
 

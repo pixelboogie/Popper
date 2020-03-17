@@ -9,8 +9,10 @@ public class Spawner : MonoBehaviour
       public float spawnDelay = 1.0f; // time to remain before spawning
       public float spawnInterval = 30.0f; // time to remain before spawning
 
-      // private bool enemySpawned = false;
-      // Start is called before the first frame update
+
+
+ 
+ 
       void Start()
       {
 

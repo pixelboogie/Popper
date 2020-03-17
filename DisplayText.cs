@@ -14,7 +14,7 @@ public class DisplayText : MonoBehaviour
 
 
       private int levelIndex;
-      public int maxBalloons = 3;
+      public int maxBalloons;
 
       private bool alreadyRan = false; // to stop it from adding multiple levels completed
 
@@ -110,7 +110,7 @@ public class DisplayText : MonoBehaviour
             //   if (popsThisLevel >= maxBalloons)
             {
 
-     alreadyRan = true;
+                  alreadyRan = true;
 
                   Debug.Log("++++++++++++++++ BallonPopIncrease if statement ");
 
@@ -118,13 +118,14 @@ public class DisplayText : MonoBehaviour
 
                   // only allow the maxballoons to be added, not more if they shoot more
                   popsThisLevel = maxBalloons;
+                   Score.popsLastLevel = maxBalloons;
 
-
-
+                  Score.totalPops = Score.totalPops + maxBalloons;
              
                   // Debug.Log("Got them all");
                   Score.myLevels++; // count the level as completed
-                  Score.popsLastLevel = popsThisLevel;
+                  // Score.popsLastLevel = popsThisLevel;
+            
 
 
 
@@ -134,7 +135,10 @@ public class DisplayText : MonoBehaviour
 
                   playOutroAnim();
 
+            }else{
+                  // Score.totalPops++;
             }
+            
       }
 
 

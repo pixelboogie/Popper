@@ -37,6 +37,9 @@ public class Score : MonoBehaviour
       private int bl = 1; // minimum for score calc
 
 
+      
+
+
       // Start is called before the first frame update
       void Start()
       {

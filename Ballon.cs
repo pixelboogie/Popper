@@ -14,6 +14,11 @@ public class Ballon : MonoBehaviour
     private Material m_Material;
 
 
+     
+      // private DisplayText referenceScript;
+    
+
+
     
     int CompareObNames(GameObject x, GameObject y)
     {
@@ -37,6 +42,8 @@ public class Ballon : MonoBehaviour
                 dieSound = GameObject.FindGameObjectWithTag("DieSound");
         //Get ballonCountDisplay
         ballonCountDisplay = GameObject.FindGameObjectWithTag("BallonCountDisplay");
+      //   referenceScript = ballonCountDisplay.GetComponent<DisplayText>();
+
     }
 
     // Update is called once per frame
@@ -73,8 +80,10 @@ public class Ballon : MonoBehaviour
             ballonCountDisplay.GetComponent<DisplayText>().BallonPopIncrease();
             popSound.GetComponent<PopSound>().PlayPop();
 
-             Score.totalPops++;
 
+            // referenceScript.checkMaxBalloons();
+            //  Score.totalPops++;
+ 
             if (health <= 0)
             {
                 Destroy(this.gameObject);
