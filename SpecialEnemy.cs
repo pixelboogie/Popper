@@ -67,8 +67,10 @@ public class SpecialEnemy : MonoBehaviour
             if (other.CompareTag("Dart"))
             {
                   health--;
-                  Score.totalPops++;
+                  // Score.totalPops++;
                   // DisplayText.ballonPopCount++;
+
+                  Destroy(other.gameObject); // destroy the arrow
 
                   if (health <= 0)
                   {

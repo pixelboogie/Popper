@@ -22,7 +22,7 @@ public class ammoCollision2 : MonoBehaviour
             referenceObject = GameObject.FindWithTag("ObjectOne");
             referenceScript = referenceObject.GetComponent<Blaster>();
 
-                        myAnimator = myAnimatorObject.GetComponent<Animator>();
+            myAnimator = myAnimatorObject.GetComponent<Animator>();
 
       }
 

@@ -75,11 +75,16 @@ public class DisplayText : MonoBehaviour
       public void BallonPopIncrease()
       {
 
-                 Debug.Log("++++++++++++++++ BallonPopIncrease called");
 
-            popsThisLevel++;
+            if (alreadyRan == false)
+            {
 
-            checkMaxBalloons();
+                         Debug.Log("++++++++++++++++ BallonPopIncrease called");
+
+                  popsThisLevel++;
+
+                  checkMaxBalloons();
+            }
 
       }
 
@@ -102,37 +107,40 @@ public class DisplayText : MonoBehaviour
       public void checkMaxBalloons()
       {
             if ((popsThisLevel >= maxBalloons) && (alreadyRan == false))
+            //   if (popsThisLevel >= maxBalloons)
             {
-                  
 
-                     Debug.Log("++++++++++++++++ BallonPopIncrease if statement ");
+     alreadyRan = true;
+
+                  Debug.Log("++++++++++++++++ BallonPopIncrease if statement ");
 
 
 
                   // only allow the maxballoons to be added, not more if they shoot more
                   popsThisLevel = maxBalloons;
 
-               
 
-                  alreadyRan = true;
+
+             
                   // Debug.Log("Got them all");
                   Score.myLevels++; // count the level as completed
                   Score.popsLastLevel = popsThisLevel;
 
-            
+
 
 
                   // myAnimator.playIntersceneOver();
                   // myAnimator.Play("")
 
                   playOutroAnim();
-                
+
             }
       }
 
 
-      public void playOutroAnim(){
-              myAnimator.SetTrigger("playIntersceneFadeIn");
+      public void playOutroAnim()
+      {
+            myAnimator.SetTrigger("playIntersceneFadeIn");
       }
 
 

@@ -17,4 +17,16 @@ public class Buckshot : MonoBehaviour
     {
         this.transform.localScale += scaleChange;
     }
+
+
+   private void OnTriggerEnter(Collider other)
+      {
+  
+                        Destroy(this.gameObject);
+
+            
+      }
+
+
+
 }
