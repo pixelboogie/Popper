@@ -71,9 +71,10 @@ public class HappyFaceGun : MonoBehaviour
             if (other.CompareTag("Dart"))
             {
 
-                  referenceScript.carryCapacity = referenceScript.carryCapacity + carryCapacityBoost; // boost carry capacity
+                  referenceScript.carryCapacity = referenceScript.carryCapacity + carryCapacityBoost; // extend carry capacity
                   referenceScript.magCapacity = referenceScript.magCapacity + magCapacityBoost; // extend mag capacity
-                  referenceScript.loadedRounds = referenceScript.magCapacity;  // and reload the gun
+                  referenceScript.loadedRounds = referenceScript.magCapacity;  // reload the gun
+                     referenceScript.carryRounds = referenceScript.carryCapacity;  // fill carried load
 
                   referenceScript.updateAmmoText();
                   // nonTargetScript.playDie();
