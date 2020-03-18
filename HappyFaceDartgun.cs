@@ -27,6 +27,7 @@ public class HappyFaceDartgun : MonoBehaviour
 
       public AudioSource source;
       public AudioClip nonTargetDieClip;
+      public AudioClip nonTargetSpawnClip;
 
       public GameObject myAnimatorObject;
       Animator myAnimator;
@@ -46,6 +47,9 @@ public class HappyFaceDartgun : MonoBehaviour
             startPosition = transform.position;
 
             myAnimator = GetComponent<Animator>();
+
+             source.PlayOneShot(nonTargetSpawnClip);
+
 
       }
 

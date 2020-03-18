@@ -24,6 +24,7 @@ public class HappyFaceGun : MonoBehaviour
 
       public AudioSource source;
    public AudioClip nonTargetDieClip;
+      public AudioClip nonTargetSpawnClip;
 
     
       public GameObject myAnimatorObject;
@@ -48,6 +49,8 @@ public class HappyFaceGun : MonoBehaviour
             startPosition = transform.position;
 
             myAnimator = GetComponent<Animator>();
+
+                     source.PlayOneShot(nonTargetSpawnClip);
 
       }
 

@@ -111,14 +111,16 @@ public class DartGun : MonoBehaviour
                   //      updateAmmoText();
             }
 
-            if (source.isPlaying == true)
-            {
+            // if (source.isPlaying == true)
+            // {
 
-            }
-            else
-            {
-                  source.PlayOneShot(reloadSound);
-            }
+            // }
+            // else
+            // {
+            //       source.PlayOneShot(reloadSound);
+            // }
+
+            source.PlayOneShot(reloadSound);
 
       }
 

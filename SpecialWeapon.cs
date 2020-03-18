@@ -49,7 +49,7 @@ public class SpecialWeapon : MonoBehaviour
             referenceObject = GameObject.FindWithTag("BallonCountDisplay");
             referenceScript = referenceObject.GetComponent<DisplayText>();
 
-               referenceObject1 = GameObject.FindWithTag("SpecialWeapon");
+            referenceObject1 = GameObject.FindWithTag("SpecialWeapon");
             referenceScript1 = referenceObject1.GetComponent<SpawnerSpecialWeapon>();
 
 
@@ -98,12 +98,12 @@ public class SpecialWeapon : MonoBehaviour
       {
 
 
-            Debug.Log("----------------------explode called");
+            Debug.Log("---------------------- special weapon explode called");
 
             if (alreadyRan == false)
             {
 
-                       Debug.Log("----------------------alreadyRan == false");
+                  Debug.Log("---------------------- special weapon  -alreadyRan == false");
 
                   referenceScript1.weaponActive = false; // weapon exploded, so we can start the countdopwn for next spawn
 
@@ -142,11 +142,12 @@ public class SpecialWeapon : MonoBehaviour
                   if (DisplayText.popsThisLevel >= referenceScript.maxBalloons)
                   {
 
+                        Debug.Log("------------------- special weapon---increment mylevels");
                         difference = DisplayText.popsThisLevel - referenceScript.maxBalloons;
 
 
                         //  Score.totalPops =  Score.totalPops + DisplayText.popsThisLevel - difference;
-                           Score.totalPops -= difference;
+                        Score.totalPops -= difference;
 
 
                         // set popsthislevel to max allowed
@@ -160,12 +161,9 @@ public class SpecialWeapon : MonoBehaviour
 
                         // Score.totalPops = Score.totalPops + killCount - difference;
                         // Score.totalPops = Score.totalPops + referenceScript.maxBalloons;
-                   
+
                         //   Score.totalPops = Score.totalPops + referenceScript.maxBalloons; 
 
-
-
-                        Debug.Log("----------------------increment mylevels");
                         Score.myLevels++; // count the level as completed
 
                         // display text function can take us to the next scene

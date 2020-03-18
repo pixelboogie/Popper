@@ -79,11 +79,11 @@ public class DisplayText : MonoBehaviour
       public void BallonPopIncrease()
       {
 
-
+        Debug.Log("++++++++++++++++ BallonPopIncrease called");
             if (alreadyRan == false)
             {
 
-                         Debug.Log("++++++++++++++++ BallonPopIncrease called");
+                    Debug.Log("++++++++++++++++ BallonPopIncrease alreadyRan == false called");
 
                   popsThisLevel++;
                   Score.totalPops++;
@@ -111,13 +111,17 @@ public class DisplayText : MonoBehaviour
 
       public void checkMaxBalloons()
       {
+
+
+  Debug.Log("++++++++++++++++DisplayText checkMaxBalloons called ");
+            
             if ((popsThisLevel >= maxBalloons) && (alreadyRan == false))
             //   if (popsThisLevel >= maxBalloons)
             {
 
                   alreadyRan = true;
 
-                  Debug.Log("++++++++++++++++ BallonPopIncrease if statement ");
+                  Debug.Log("+++++++++++++++DisplayText checkMaxBalloons if statement ");
 
                   difference = popsThisLevel - maxBalloons;
                   // Score.totalPops = Score.totalPops + popsThisLevel - difference;
@@ -144,7 +148,7 @@ public class DisplayText : MonoBehaviour
 
             }else{
 
-                      Debug.Log("++++++++++++++++  Score.totalPops++ called");
+                  //     Debug.Log("++++++++++++++++  Score.totalPops++ called");
                   // Score.totalPops++;
             }
             

@@ -20,8 +20,8 @@ public class NonTarget : MonoBehaviour
       private float resetInterval = 20.0f; // for each subsequent spawn
       private bool friendlySpawned = false;
 
-      public AudioSource source;
-      public AudioClip nonTargetClip;
+      // public AudioSource source;
+      // public AudioClip nonTargetClip;
       // public AudioClip nonTargetDieClip;
 
       private int thisSpawn;
@@ -84,7 +84,7 @@ public class NonTarget : MonoBehaviour
             // var friendly = Instantiate(friendlyPrefab, friendlyLocation.position, friendlyLocation.transform.rotation);
             var friendly = Instantiate(friendlyPrefab, spawnLocations[thisSpawn].position, spawnLocations[thisSpawn].transform.rotation);
             // friendlySpawned = true;
-            source.PlayOneShot(nonTargetClip);
+            // source.PlayOneShot(nonTargetClip);
       }
 
       public void playDie()
