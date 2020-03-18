@@ -12,6 +12,8 @@ public class Footsteps : MonoBehaviour {
       float Timer = 0.0f;
       CharacterController OVR;
 
+      public float ClipTime = 0.3f;
+
       // Start is called before the first frame update
       void Start () {
             OVR = GetComponent<CharacterController> ();
@@ -42,7 +44,8 @@ public class Footsteps : MonoBehaviour {
             //if (OVR.isGrounded == true && OVR.velocity.magnitude > 2.0f) {
             // if (OVR.isGrounded == false) {
             if (OVR.velocity.magnitude > .5f) {
-                  if (Timer > 0.3f) {
+                  // if (Timer > 0.3f) {
+                  if (Timer > ClipTime) {
                         //		AkSoundEngine.PostEvent ("Footsteps", gameObject);
                         // stopSteps();
                         playSteps ();

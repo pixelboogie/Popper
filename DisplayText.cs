@@ -84,7 +84,8 @@ public class DisplayText : MonoBehaviour
                          Debug.Log("++++++++++++++++ BallonPopIncrease called");
 
                   popsThisLevel++;
-
+                  Score.totalPops++;
+                  
                   checkMaxBalloons();
             }
 

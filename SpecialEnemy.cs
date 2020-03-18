@@ -26,7 +26,7 @@ public class SpecialEnemy : MonoBehaviour
       Animator myAnimator;
 
       private bool resetAnim = false;
-      private float waitTime = 30.0f;
+      private float waitTime = 40.0f;
 
 
 
