@@ -14,9 +14,9 @@ public class HappyFaceGun : MonoBehaviour
       public float throttle = 1.5f; // speed it rises
       float dist; // track dist balloon goes up before destroying it
 
-      private int carryCapacityBoost = 10; // how much to increase carrycapacity if popped
+      private int carryCapacityBoost = 5; // how much to increase carrycapacity if popped
 
-      private int magCapacityBoost = 10; // how much to increase magcapacity if popped
+      private int magCapacityBoost = 5; // how much to increase magcapacity if popped
 
 
   // ------------------------------------
