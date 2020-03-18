@@ -135,14 +135,19 @@ public class SpecialWeapon : MonoBehaviour
                   }
 
 
-                  // Score.totalPops = Score.totalPops + killCount; // display total pops
-                  DisplayText.popsThisLevel = DisplayText.popsThisLevel + killCount; // add killcount to the popsthis level
+                  Score.totalPops += killCount; // add to display total pops
+                  DisplayText.popsThisLevel += killCount; // add killcount to the popsthis level
 
                   // if we're at or past the max
                   if (DisplayText.popsThisLevel >= referenceScript.maxBalloons)
                   {
 
                         difference = DisplayText.popsThisLevel - referenceScript.maxBalloons;
+
+
+                        //  Score.totalPops =  Score.totalPops + DisplayText.popsThisLevel - difference;
+                           Score.totalPops -= difference;
+
 
                         // set popsthislevel to max allowed
                         DisplayText.popsThisLevel = referenceScript.maxBalloons;
@@ -155,8 +160,8 @@ public class SpecialWeapon : MonoBehaviour
 
                         // Score.totalPops = Score.totalPops + killCount - difference;
                         // Score.totalPops = Score.totalPops + referenceScript.maxBalloons;
-                        //  Score.totalPops =  Score.totalPops + DisplayText.popsThisLevel - difference;
-                          Score.totalPops = Score.totalPops + referenceScript.maxBalloons;
+                   
+                        //   Score.totalPops = Score.totalPops + referenceScript.maxBalloons; 
 
 
 

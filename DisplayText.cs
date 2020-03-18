@@ -24,6 +24,8 @@ public class DisplayText : MonoBehaviour
       private bool alreadyFaded = false; // have we faded in yet
       private float waitTime = 1f; // time to wait before fading in
 
+      private int difference = 0;
+
       void Start()
       {
             popsThisLevel = 0;
@@ -117,19 +119,21 @@ public class DisplayText : MonoBehaviour
 
                   Debug.Log("++++++++++++++++ BallonPopIncrease if statement ");
 
-
+                  difference = popsThisLevel - maxBalloons;
+                  // Score.totalPops = Score.totalPops + popsThisLevel - difference;
+                   Score.totalPops -= difference;
 
                   // only allow the maxballoons to be added, not more if they shoot more
                   popsThisLevel = maxBalloons;
                    Score.popsLastLevel = maxBalloons;
 
-                  Score.totalPops = Score.totalPops + maxBalloons;
+                  // Score.totalPops = Score.totalPops + maxBalloons;
              
                   // Debug.Log("Got them all");
                   Score.myLevels++; // count the level as completed
                   // Score.popsLastLevel = popsThisLevel;
             
-
+            
 
 
 
@@ -139,6 +143,8 @@ public class DisplayText : MonoBehaviour
                   playOutroAnim();
 
             }else{
+
+                      Debug.Log("++++++++++++++++  Score.totalPops++ called");
                   // Score.totalPops++;
             }
             
