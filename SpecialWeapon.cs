@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpecialWeapon : MonoBehaviour
 {
 
-      private float radius = 20f;
+      private float radius = 40f;  //20f
       private float force = 4000f;
 
       private int killCount = 0;
