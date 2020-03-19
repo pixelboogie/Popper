@@ -122,7 +122,8 @@ public class SpecialWeapon : MonoBehaviour
                         if (nearbyObject.CompareTag("Balloon"))
                         {
                               killCount++;
-                        }
+                      
+
 
                         Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
 
@@ -131,6 +132,7 @@ public class SpecialWeapon : MonoBehaviour
                               rb.AddExplosionForce(force, transform.position, radius);
                               Destroy(rb.gameObject, .5f);
                         }
+                          }
 
                   }
 

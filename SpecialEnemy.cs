@@ -21,12 +21,11 @@ public class SpecialEnemy : MonoBehaviour
 
       private bool alreadyExploded = false;
 
-      // ------------------------------------
       public GameObject myAnimatorObject;
       Animator myAnimator;
 
       private bool resetAnim = false;
-      private float waitTime = 40.0f;
+      private float waitTime = 45.0f;
 
 
 

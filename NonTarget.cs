@@ -16,8 +16,8 @@ public class NonTarget : MonoBehaviour
 
 
 
-      private float timeLeft = 8.0f; // time to remain before spawning the friendly
-      private float resetInterval = 20.0f; // for each subsequent spawn
+      public float delayTime = 8.0f; // time to remain before spawning the friendly
+      public float spawnInterval = 20.0f; // for each subsequent spawn
       private bool friendlySpawned = false;
 
       // public AudioSource source;
@@ -48,20 +48,20 @@ public class NonTarget : MonoBehaviour
 
             if (friendlySpawned == false)
             {
-                  timeLeft -= Time.deltaTime;
+                  delayTime -= Time.deltaTime;
 
-                  if (timeLeft < 0)
+                  if (delayTime < 0)
                   {
-                        timeLeft = resetInterval;
+                        delayTime = spawnInterval;
                         spawnOne();
                   }
             }
 
             // if (friendlySpawned == true)
             // {
-            //       timeLeft -= Time.deltaTime;
+            //       delayTime -= Time.deltaTime;
 
-            //       if (timeLeft < 0)
+            //       if (delayTime < 0)
             //       {
             //             spawnOne();
             //       }
