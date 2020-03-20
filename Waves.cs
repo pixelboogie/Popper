@@ -14,11 +14,13 @@ public class Waves : MonoBehaviour
     private float nextBallon = 1f; // amt of time to wait before spawning next???
 
     //Ballon limiter
-    public int ballonsPerWave = 5;  // how many to spawn per wave???
+    public int ballonsPerWave = 10;  // how many to spawn per wave???
+
+      public int waveIncreaser = 20;  // how more to spawn each wave
     private int ballonsCount = 1; // number of balloons spawned
     //waves timer
     public float wavesTimer = 0f; // set to nextWave + currenttime
-    public float nextWave = 20f; // amount of time to wait before the next way
+    public float nextWave = 20f; // amount of time to wait before the next wave
 
     // Update is called once per frame
     void Update()
@@ -28,6 +30,12 @@ public class Waves : MonoBehaviour
         {
             ballonsCount++;
             difficulty += difficultyIncreaseSpeed;
+            if(difficulty > 5){
+                  difficulty = 5;
+            }
+
+
+
             ballonTimer = Time.time + nextBallon;
  
                 var ballon =  Instantiate(ballonGreen, startPosition.position, ballonGreen.transform.rotation);
@@ -37,6 +45,7 @@ public class Waves : MonoBehaviour
      //create waves
         if (ballonsCount % ballonsPerWave == 0 && wavesTimer < Time.time)
         {
+              ballonsPerWave += waveIncreaser;
             wavesTimer = nextWave + Time.time;
         }
 
