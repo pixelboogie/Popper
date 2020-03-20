@@ -10,7 +10,7 @@ public class TipText : MonoBehaviour
       public TextMeshPro myTipText;
 
 
-      private string[] Values;
+      private string[] Tips;
       //     private GameObject[] Tips; 
 
       private int myTipNum;
@@ -19,19 +19,20 @@ public class TipText : MonoBehaviour
       void Start()
       {
 
-            Values = new string[7];
-            Values[0] = "Practice makes perfect.";
-            Values[1] = "Knowing the locations of AMMO BOXES is very important.";
-            Values[2] = "Popping CLOWN BALLOONS increases your carrying capacity.";
-            Values[3] = "It's a BUMMER when a balloon make it all the way to the end.";
-            Values[3] = "It's GAME OVER when you reach 10 BUMMERS.";
-            Values[4] = "Shoot down a HOT AIR BALLOON to undo a bummer.";
-            Values[5] = "Completing levels increases your score. BUMMERS reduce your score.";
-            Values[6] = "Complete more levels to earn new weapons.";
+            Tips = new string[8];
+            Tips[0] = "Practice makes perfect.";
+            Tips[1] = "Knowing the locations of AMMO BOXES is very important.";
+            Tips[2] = "Popping CLOWN BALLOONS increases your carrying capacity.";
+            Tips[3] = "It's a BUMMER when a balloon make it all the way to the end.";
+            Tips[3] = "It's GAME OVER when you reach 10 BUMMERS.";
+            Tips[4] = "Shoot down a HOT AIR BALLOON to undo a bummer.";
+            Tips[5] = "Completing levels increases your score. BUMMERS reduce your score.";
+            Tips[6] = "Complete more levels to earn new weapons.";
+            Tips[7] = "Complete all level to become a Pop Star.";
 
-            myTipNum = UnityEngine.Random.Range(1, 7);
+            myTipNum = UnityEngine.Random.Range(1, 8);
 
-            myTipText.text = "Tip: " + Values[myTipNum];
+            myTipText.text = "Tip: " + Tips[myTipNum];
    
       }
 
