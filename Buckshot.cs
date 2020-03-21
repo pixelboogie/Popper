@@ -9,7 +9,8 @@ public class Buckshot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
+      //   scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
+        scaleChange = new Vector3(1.0f, 1.0f, 1.0f);
     }
 
     // Update is called once per frame
