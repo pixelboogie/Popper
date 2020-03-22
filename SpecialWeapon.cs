@@ -6,7 +6,7 @@ public class SpecialWeapon : MonoBehaviour
 {
 
       private float radius = 40f;  //20f
-      private float force = 4000f;
+      private float force = 6000f; //  4000f;
 
       private int killCount = 0;
 
@@ -130,7 +130,7 @@ public class SpecialWeapon : MonoBehaviour
                         if (rb != null)
                         {
                               rb.AddExplosionForce(force, transform.position, radius);
-                              Destroy(rb.gameObject, .5f);
+                              Destroy(rb.gameObject, .7f);
                         }
                           }
 

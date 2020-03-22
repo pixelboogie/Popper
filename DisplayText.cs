@@ -61,16 +61,10 @@ public class DisplayText : MonoBehaviour
 
             if (!alreadyFaded)
             {
-
-
                   waitTime -= Time.deltaTime;
-
                   if (waitTime <= 0)
                   {
-
                         fadeIn();
-
-
                   }
             }
 

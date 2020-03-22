@@ -5,10 +5,17 @@ using UnityEngine;
 public class Buckshot : MonoBehaviour
 {
 
+
+       public Vector3 startPosition;
+      private float dist; 
       private Vector3 scaleChange;
-    // Start is called before the first frame update
+
+
+
     void Start()
     {
+
+          startPosition =  transform.position;
       //   scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
         scaleChange = new Vector3(1.0f, 1.0f, 1.0f);
     }
@@ -16,16 +23,20 @@ public class Buckshot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+       dist = Vector3.Distance(startPosition, transform.position);
+
+       if(dist < 32){
         this.transform.localScale += scaleChange;
+        } else {
+                 Destroy(this.gameObject);          
+        }
     }
 
 
    private void OnTriggerEnter(Collider other)
       {
-  
-                        Destroy(this.gameObject);
-
-            
+            Destroy(this.gameObject);          
       }
 
 

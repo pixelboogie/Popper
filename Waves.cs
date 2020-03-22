@@ -11,7 +11,7 @@ public class Waves : MonoBehaviour
 
     //Timer
     private float ballonTimer = 0f; // so they can spawn every frame???
-    private float nextBallon = 1.2f; // amt of time to wait before spawning next???
+    public float nextBallon = 1.2f; // amt of time to wait before spawning next???
 
     //Ballon limiter
     public int ballonsPerWave = 10;  // how many to spawn per wave???
@@ -80,11 +80,9 @@ void Start(){
  
                 var ballon =  Instantiate(ballonGreen, startPosition.position, ballonGreen.transform.rotation);
             //     ballon.GetComponent<Ballon>().colorNum += (int)System.Math.Round(WaveColor);
-                ballon.GetComponent<Ballon>().colorNum = ballonsCount/colorFactor;
-                  // ballon.GetComponent<Ballon>().colorNum = WaveColor;
+            // ballon.GetComponent<Ballon>().colorNum = WaveColor;
             //     ballon.GetComponent<Ballon>().speed += (int)System.Math.Round(difficulty);
-
-
+                  ballon.GetComponent<Ballon>().colorNum = (int)System.Math.Round(ballonsCount/colorFactor);
               
                 
         }
