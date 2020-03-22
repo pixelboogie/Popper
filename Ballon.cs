@@ -9,15 +9,17 @@ public class Ballon : MonoBehaviour
     public GameObject[] wayPoints; 
     public GameObject[] wayPoints2;
     private int nextWayPointIndex = 0; // the next waypoint to visit
-    public int health = 1;
+//     public int colorNum = 1;
+       public float colorNum;
     public float speed = 1;
     private Material m_Material;
 
+    public GameObject Waves;
 
-     
+
       // private DisplayText referenceScript;
     
-
+// private int maxBalloons;
 
     
     int CompareObNames(GameObject x, GameObject y)
@@ -44,12 +46,21 @@ public class Ballon : MonoBehaviour
         ballonCountDisplay = GameObject.FindGameObjectWithTag("BallonCountDisplay");
       //   referenceScript = ballonCountDisplay.GetComponent<DisplayText>();
 
+      // maxBalloons = referenceScript.maxBalloons;
+
+
+             Waves = GameObject.FindGameObjectWithTag("Waves");
+
+
+
+            ColorBallons();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-          ColorBallons();
+      //     ColorBallons();
         MoveBallon();
         
 
@@ -57,17 +68,35 @@ public class Ballon : MonoBehaviour
 
     private void ColorBallons()
     {
-        if (health == 3)
+
+
+
+
+      //   if (colorNum > 5)
+      //   {
+      //       m_Material.color = Color.black;
+      //   }
+
+        if (colorNum > 4 )
         {
             m_Material.color = Color.red;
         }
-        else if (health == 2)
+
+            if (colorNum <= 4)
+        {
+            m_Material.color = Color.yellow;
+        }
+        if (colorNum <= 3)
+        {
+            m_Material.color = Color.green;
+        }
+         if (colorNum <= 2)
         {
             m_Material.color = Color.blue;
         }
-        else if (health == 1)
+         if (colorNum <= 1)
         {
-            m_Material.color = Color.green;
+            m_Material.color = Color.magenta;
         }
     }
 
@@ -76,7 +105,7 @@ public class Ballon : MonoBehaviour
         if(other.CompareTag("Dart"))
         {
 
-            health--;
+            // health--;
             ballonCountDisplay.GetComponent<DisplayText>().BallonPopIncrease();
             popSound.GetComponent<PopSound>().PlayPop();
 
@@ -84,16 +113,20 @@ public class Ballon : MonoBehaviour
             // referenceScript.checkMaxBalloons();
             //  Score.totalPops++;
  
-            if (health <= 0)
-            {
+            // if (health <= 0)
+            // {
                 Destroy(this.gameObject);
 
-            }
+            // }
            
         }
     }
     private void MoveBallon()
     {
+
+         
+
+          
         var lastWayPointIndex = wayPoints.Length - 1; // keep track of the last waypoint
         Vector3 lastWayPoint = wayPoints[lastWayPointIndex].transform.position + new Vector3(0,2,0);  // make lastWayPoint the position plus 2m above ground
         Vector3 nextWayPoint = wayPoints[nextWayPointIndex].transform.position + new Vector3(0,2,0);
@@ -101,6 +134,7 @@ public class Ballon : MonoBehaviour
         //If enemy is more than 0.1 meters from the last waypoint
         if (Vector3.Distance(transform.position, lastWayPoint) > 0.1f)
         {
+               speed = Waves.GetComponent<Waves>().balloonSpeed;
             // Keep moving towards the next waypoint
             transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
         }
