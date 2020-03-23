@@ -21,8 +21,6 @@ public class HappyFaceDartgun : MonoBehaviour
       private int magCapacityBoost = 5; // how much to increase magcapacity if popped
 
 
-      // ------------------------------------
-
       private bool alreadyExploded = false;
 
       public AudioSource source;
@@ -76,26 +74,20 @@ public class HappyFaceDartgun : MonoBehaviour
                   referenceScript.magCapacity = referenceScript.magCapacity + magCapacityBoost; // extend mag capacity
                   referenceScript.loadedRounds = referenceScript.magCapacity;  // reload the gun
                      referenceScript.carryRounds = referenceScript.carryCapacity;  // fill carried load
-
                   referenceScript.updateAmmoText();
-                  // nonTargetScript.playDie();
-                  // Destroy(this.gameObject);
-
-                    explode();
+                     explode();
             }
       }
 
          private void explode()
       {
 
-            // Debug.Log("++++++++++++++++ explode called");
-
+     
             if (!alreadyExploded)
             {
 
 
-                  // Debug.Log("++++++++++++++++ explode if statement called");
-
+         
 
 
 
@@ -103,7 +95,6 @@ public class HappyFaceDartgun : MonoBehaviour
 
                   source.PlayOneShot(nonTargetDieClip);
 
-                  // Debug.Log("________________________Explode");
 
                   playDie();
 
@@ -112,7 +103,7 @@ public class HappyFaceDartgun : MonoBehaviour
 
       public void playDie()
       {
-            // Debug.Log("------------------------ playDie ");
+           
 
             myAnimator.SetBool("AnimeDie", true);
 
@@ -120,8 +111,7 @@ public class HappyFaceDartgun : MonoBehaviour
 
       public void destoryIt()
       {
-            // Debug.Log("------------------------ destoryIt ");
-            Destroy(gameObject);
+             Destroy(gameObject);
       }
 
 

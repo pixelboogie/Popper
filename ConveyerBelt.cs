@@ -6,21 +6,16 @@ public class ConveyerBelt : MonoBehaviour
 {
 
 
-public GameObject belt;
-public Transform endpoint;
-public float speed;
-
-private void Update() {
-            // Debug.Log("_______________________________Update");
-}
+      public GameObject belt;
+      public Transform endpoint;
+      public float speed;
 
 
-void OnTriggerStay(Collider other){
-//  private void OnCollisionStay(Collision other) {
 
+      void OnTriggerStay(Collider other)
+      {
 
-      // Debug.Log("_______________________________TRIGGER");
-      other.transform.position = Vector3.MoveTowards(other.transform.position, endpoint.position, speed * Time.deltaTime);
-}
+            other.transform.position = Vector3.MoveTowards(other.transform.position, endpoint.position, speed * Time.deltaTime);
+      }
 
 }

@@ -51,7 +51,6 @@ public class ammoCollision4 : MonoBehaviour
             if (other.CompareTag("Player"))
             {
 
-                  Debug.Log("-------------------------------- Got it");
                   myAnimator.SetBool("ShowAmmoAnim", true);
                   resetAnim = true;
                   waitTime = .3f;

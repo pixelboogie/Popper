@@ -10,7 +10,7 @@ public class Score : MonoBehaviour
 
       public static int totalPops = 0;
       public static int popsLastLevel = 0;
-      
+
       public static int popsRemaining;
       public static int myLevels = 0;
 
@@ -34,7 +34,7 @@ public class Score : MonoBehaviour
 
       public TextMeshPro PopsLastLevelText;
 
-      
+
       public TextMeshPro popsRemainingText;
 
       private int ml = 1; // minimum for score calc
@@ -43,28 +43,25 @@ public class Score : MonoBehaviour
 
 
 
-      // Start is called before the first frame update
+
       void Start()
       {
-      //   bummersLeft = bummersAllowed;
-             bummersLeft = bummersAllowed - GameVariables.bummers;
-            //  Debug.Log("--------------------------- Start bummersLeft   " + bummersLeft);
+
+            bummersLeft = bummersAllowed - GameVariables.bummers;
+
       }
 
-      // Update is called once per frame
+
       void Update()
       {
- 
-             bummersLeft = bummersAllowed - GameVariables.bummers;
 
-            //  Debug.Log("-------------------------Score-Update -bummersLeft   " + bummersLeft);
-                  // Debug.Log("----------------------Score----Update   GameVariables.bummers " + GameVariables.bummers);
+            bummersLeft = bummersAllowed - GameVariables.bummers;
 
             TotalPopsText.text = totalPops.ToString();
             LevelsText.text = myLevels.ToString();
 
             BummersText.text = GameVariables.bummers.ToString();
-            // BummersText.text = bummersLeft.ToString();
+
             PopsLastLevelText.text = popsLastLevel.ToString();
 
             popsRemainingText.text = popsRemaining.ToString();
@@ -94,15 +91,10 @@ public class Score : MonoBehaviour
             {
                   bl = bummersLeft;
             }
-
-            // int scoreCalculation = ml * tp * bl;
-              scoreCalculation = ml * tp * bl;
+            scoreCalculation = ml * tp * bl;
             FinalScoreText.text = scoreCalculation.ToString();
 
 
       }
-
-
-
 
 }

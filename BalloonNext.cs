@@ -6,12 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class BalloonNext : MonoBehaviour
 {
-
       public GameObject popSound;
       private int levelIndex;
-
-
-
       public GameObject myAnimatorObject;
       Animator myAnimator;
 
@@ -19,16 +15,13 @@ public class BalloonNext : MonoBehaviour
       private float waitTime = 1f; // time to wait before fading in
 
 
-      // Start is called before the first frame update
       void Start()
       {
             myAnimator = myAnimatorObject.GetComponent<Animator>();
       }
 
-      // Update is called once per frame
       void Update()
       {
-
             if (!alreadyFaded)
             {
                   waitTime -= Time.deltaTime;
@@ -44,14 +37,9 @@ public class BalloonNext : MonoBehaviour
             if (other.CompareTag("Dart"))
             {
                   popSound.GetComponent<PopSound>().PlayPop();
-                  //     Destroy(this.gameObject);
                   this.transform.localScale = new Vector3(0, 0, 0);
                   myAnimator.SetTrigger("playIntersceneFadeIn");
-                  // levelIndex = SceneManager.GetActiveScene ().buildIndex + 1;
-                  // SceneManager.LoadScene (levelIndex);
-
-
-            }
+             }
       }
 
 
@@ -59,7 +47,7 @@ public class BalloonNext : MonoBehaviour
 
       public void goNextLevel()
       {
-            // Debug.Log("++++++++++++++++ goNextLevel called");
+     
             levelIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
             SceneManager.LoadScene(levelIndex);

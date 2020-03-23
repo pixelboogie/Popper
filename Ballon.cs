@@ -18,10 +18,6 @@ public class Ballon : MonoBehaviour
       private bool alreadyHit = false; 
 
 
-      // private DisplayText referenceScript;
-
-      // private int maxBalloons;
-
 
       int CompareObNames(GameObject x, GameObject y)
       {
@@ -46,39 +42,19 @@ public class Ballon : MonoBehaviour
             dieSound = GameObject.FindGameObjectWithTag("DieSound");
             //Get ballonCountDisplay
             ballonCountDisplay = GameObject.FindGameObjectWithTag("BallonCountDisplay");
-            //   referenceScript = ballonCountDisplay.GetComponent<DisplayText>();
-
-            // maxBalloons = referenceScript.maxBalloons;
-
-
             Waves = GameObject.FindGameObjectWithTag("Waves");
-
-
-
             ColorBallons();
 
       }
 
-      // Update is called once per frame
+
       void Update()
       {
-            //     ColorBallons();
             MoveBallon();
-
-
       }
 
       private void ColorBallons()
       {
-
-
-
-
-            //   if (colorNum > 5)
-            //   {
-            //       m_Material.color = Color.black;
-            //   }
-
             m_Material.color = Color.black;
 
             if (colorNum > 4)
@@ -108,33 +84,14 @@ public class Ballon : MonoBehaviour
       {
             if ((other.CompareTag("Dart")) && !alreadyHit)
             {
-
                   alreadyHit = true;
-
-
-                  Debug.Log("----------------------  hit balloon -----------" + this.name);
-                  // health--;
                   ballonCountDisplay.GetComponent<DisplayText>().BallonPopIncrease();
                   popSound.GetComponent<PopSound>().PlayPop();
-
-
-                  // referenceScript.checkMaxBalloons();
-                  //  Score.totalPops++;
-
-                  // if (health <= 0)
-                  // {
                   Destroy(this.gameObject);
-
-                  // }
-
             }
       }
       private void MoveBallon()
       {
-
-
-
-
             var lastWayPointIndex = wayPoints.Length - 1; // keep track of the last waypoint
             Vector3 lastWayPoint = wayPoints[lastWayPointIndex].transform.position + new Vector3(0, 2, 0);  // make lastWayPoint the position plus 2m above ground
             Vector3 nextWayPoint = wayPoints[nextWayPointIndex].transform.position + new Vector3(0, 2, 0);
@@ -154,14 +111,8 @@ public class Ballon : MonoBehaviour
             //Ballon at Finish
             if (nextWayPointIndex == lastWayPointIndex && Vector3.Distance(transform.position, lastWayPoint) < 0.5f)
             {
-
-                  //  Debug.Log("++++++++++++++++ Ballon at Finish called");
-
                   dieSound.GetComponent<DieSound>().PlayDie();
-                  // ballonCountDisplay.GetComponent<DisplayText>().LivesDecrease();
-                  // Score.bummers++;
                   GameVariables.bummers++;
-
                   Destroy(this.gameObject);
 
             }

@@ -49,7 +49,7 @@ namespace Oculus.Platform.Samples.EntitlementCheck
     {
       if (result) // User passed entitlement check
       {
-        Debug.Log("Oculus user entitlement check successful.");
+      //   Debug.Log("Oculus user entitlement check successful.");
           SceneManager.LoadScene("Scenes/00_Start");
 
         try
@@ -63,7 +63,7 @@ namespace Oculus.Platform.Samples.EntitlementCheck
         catch
         {
           // Suppressing any exceptions to avoid potential exceptions in the app-provided event handler.
-          Debug.LogError("Suppressed exception in app-provided UserPassedEntitlementCheck() event handler.");
+      //     Debug.LogError("Suppressed exception in app-provided UserPassedEntitlementCheck() event handler.");
         }
       }
       else // User failed entitlement check
@@ -80,13 +80,13 @@ namespace Oculus.Platform.Samples.EntitlementCheck
         {
           // Suppressing any exceptions to avoid potential exceptions in the app-provided event handler.
           // Ensures the default entitlement check behavior will still execute, if enabled.
-          Debug.LogError("Suppressed exception in app-provided UserFailedEntitlementCheck() event handler.");
+      //     Debug.LogError("Suppressed exception in app-provided UserFailedEntitlementCheck() event handler.");
         }
 
         if (exitAppOnFailure)
         {
           // Implements a default behavior for an entitlement check failure -- log the failure and exit the app.
-          Debug.LogError("Oculus user entitlement check failed. Exiting now.");
+      //     Debug.LogError("Oculus user entitlement check failed. Exiting now.");
 #if UNITY_EDITOR
           UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -95,7 +95,7 @@ namespace Oculus.Platform.Samples.EntitlementCheck
         }
         else
         {
-          Debug.LogError("Oculus user entitlement check failed.");
+      //     Debug.LogError("Oculus user entitlement check failed.");
         }
       }
     }

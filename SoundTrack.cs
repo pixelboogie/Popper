@@ -6,11 +6,7 @@ public class SoundTrack : MonoBehaviour
 {
 
       AudioSource m_AudioSource;
-      //  public static bool musicOn = true;
-
-
-
-      // Start is called before the first frame update
+  
       void Start()
       {
             m_AudioSource = GetComponent<AudioSource>();
@@ -20,14 +16,13 @@ public class SoundTrack : MonoBehaviour
             }
       }
 
-      // Update is called once per frame
+
       void Update()
       {
 
             if (OVRInput.GetDown(OVRInput.RawButton.Y))
             {
-                  //     if (OVRInput.GetDown(OVRInput.Button.Four)){
-                  //     if (OVRInput.GetDown(OVRInput.Touch.Two)){
+          
                   ToggleMusic();
             }
       }
@@ -38,13 +33,13 @@ public class SoundTrack : MonoBehaviour
       {
             if (GameVariables.musicOn)
             {
-                  //     Debug.Log("----------------- stop it");
+                 
                   GameVariables.musicOn = false;
                   m_AudioSource.Stop();
             }
             else
             {
-                  //  Debug.Log("----------------- play it");
+              
                   GameVariables.musicOn = true;
                   m_AudioSource.Play();
             }

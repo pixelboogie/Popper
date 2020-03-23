@@ -10,7 +10,7 @@ public class ammoCollision : MonoBehaviour
 
       public AudioSource source;
 
-  public  GameObject myAnimatorObject;
+      public GameObject myAnimatorObject;
       Animator myAnimator;
 
       private bool resetAnim = false;
@@ -24,23 +24,19 @@ public class ammoCollision : MonoBehaviour
 
             myAnimator = myAnimatorObject.GetComponent<Animator>();
 
-                   
+
       }
 
-      // Update is called once per frame
-    void Update()
-      {
 
+      void Update()
+      {
             if (resetAnim)
             {
-
                   waitTime -= Time.deltaTime;
-
                   if (waitTime < 0)
                   {
-                         myAnimator.SetBool("ShowAmmoAnim", false);
+                        myAnimator.SetBool("ShowAmmoAnim", false);
                         resetAnim = false;
-
                   }
             }
 
@@ -50,10 +46,9 @@ public class ammoCollision : MonoBehaviour
 
       private void OnTriggerEnter(Collider other)
       {
-
             if (other.CompareTag("Player"))
             {
-                 myAnimator.SetBool("ShowAmmoAnim", true);
+                  myAnimator.SetBool("ShowAmmoAnim", true);
                   resetAnim = true;
                   waitTime = .3f;
 
@@ -63,21 +58,16 @@ public class ammoCollision : MonoBehaviour
                   referenceScript.updateAmmoText();
 
                   source.Play();
-// 
-              
-
             }
       }
 
-            private void OnTriggerExit(Collider other)
+      private void OnTriggerExit(Collider other)
       {
-
             if (other.CompareTag("Player"))
             {
                   myAnimator.SetBool("ShowAmmoAnim", false);
-                    waitTime = .3f;
+                  waitTime = .3f;
             }
-
       }
 
 }

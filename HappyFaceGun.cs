@@ -8,8 +8,7 @@ public class HappyFaceGun : MonoBehaviour
       public TextMeshPro ammoText;
       GameObject referenceObject;
       Gun referenceScript;
-      // GameObject nonTargetObject;
-      // NonTarget nonTargetScript;
+
       private Vector3 startPosition;
       public float throttle = 1.5f; // speed it rises
       float dist; // track dist balloon goes up before destroying it
@@ -19,7 +18,7 @@ public class HappyFaceGun : MonoBehaviour
       private int magCapacityBoost = 5; // how much to increase magcapacity if popped
 
 
-  // ------------------------------------
+
  private bool alreadyExploded = false;
 
       public AudioSource source;
@@ -36,15 +35,11 @@ public class HappyFaceGun : MonoBehaviour
 
 
 
-
       void Start()
       {
 
             referenceObject = GameObject.FindWithTag("ObjectOne");
             referenceScript = referenceObject.GetComponent<Gun>();
-
-            // nonTargetObject = GameObject.FindWithTag("nonTarget");
-            // nonTargetScript = nonTargetObject.GetComponent<NonTarget>();
 
             startPosition = transform.position;
 
@@ -54,7 +49,7 @@ public class HappyFaceGun : MonoBehaviour
 
       }
 
-      // Update is called once per frame
+    
       void Update()
       {
             transform.Translate(Vector3.up * Time.deltaTime * throttle);
@@ -77,8 +72,7 @@ public class HappyFaceGun : MonoBehaviour
                      referenceScript.carryRounds = referenceScript.carryCapacity;  // fill carried load
 
                   referenceScript.updateAmmoText();
-                  // nonTargetScript.playDie();
-                  // Destroy(this.gameObject);
+
                   explode();
             }
       }
@@ -87,22 +81,16 @@ public class HappyFaceGun : MonoBehaviour
       private void explode()
       {
 
-            // Debug.Log("++++++++++++++++ explode called");
-
+         
             if (!alreadyExploded)
             {
-
-
-                  // Debug.Log("++++++++++++++++ explode if statement called");
-
-
 
 
                   alreadyExploded = true;
 
                   source.PlayOneShot(nonTargetDieClip);
 
-                  // Debug.Log("________________________Explode");
+             
 
                   playDie();
 
@@ -111,7 +99,7 @@ public class HappyFaceGun : MonoBehaviour
 
       public void playDie()
       {
-            // Debug.Log("------------------------ playDie ");
+           
 
             myAnimator.SetBool("AnimeDie", true);
 
@@ -119,7 +107,7 @@ public class HappyFaceGun : MonoBehaviour
 
       public void destoryIt()
       {
-            // Debug.Log("------------------------ destoryIt ");
+           
             Destroy(gameObject);
       }
 

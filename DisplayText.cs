@@ -36,26 +36,12 @@ public class DisplayText : MonoBehaviour
 
       void Update()
       {
-
-            //     Debug.Log("++++++++++++++++ DisplayText Update called. Score.bummersLeft: " + Score.bummersLeft);
-
             popsThisLevelText.text = popsThisLevel.ToString();
-                Score.popsRemaining = maxBalloons - popsThisLevel; // xxx
-
-            //  Debug.Log("---------------------------bummersLeft" + Score.bummersLeft);
-
+            Score.popsRemaining = maxBalloons - popsThisLevel;
             if (Score.bummersLeft <= 0)
             {
-                  //     Debug.Log("++++++++++++++++ Go to EndScene");
-                  // UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-                  // UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
-                  //      SceneManager.LoadScene("EndSceneLose");
-
                   Score.popsLastLevel = popsThisLevel; ///add this to make it display on game over scene
-              
-
                   SceneManager.LoadScene("EndSceneLose");
-
             }
 
 
@@ -72,25 +58,17 @@ public class DisplayText : MonoBehaviour
 
       public void BallonPopIncrease()
       {
-
-        Debug.Log("++++++++++++++++ BallonPopIncrease called");
             if (alreadyRan == false)
             {
-
-                    Debug.Log("++++++++++++++++ BallonPopIncrease alreadyRan == false called");
-
                   popsThisLevel++;
                   Score.totalPops++;
-                  
                   checkMaxBalloons();
             }
-
       }
 
 
       public void goNextLevel()
       {
-            //  Debug.Log("++++++++++++++++ goNextLevel called");
             levelIndex = SceneManager.GetActiveScene().buildIndex + 1;
             SceneManager.LoadScene(levelIndex);
       }
@@ -105,47 +83,17 @@ public class DisplayText : MonoBehaviour
 
       public void checkMaxBalloons()
       {
-
-
-  Debug.Log("++++++++++++++++DisplayText checkMaxBalloons called ");
-            
             if ((popsThisLevel >= maxBalloons) && (alreadyRan == false))
-            //   if (popsThisLevel >= maxBalloons)
-            {
-
+                   {
                   alreadyRan = true;
-
-                  Debug.Log("+++++++++++++++DisplayText checkMaxBalloons if statement ");
-
                   difference = popsThisLevel - maxBalloons;
-                  // Score.totalPops = Score.totalPops + popsThisLevel - difference;
-                   Score.totalPops -= difference;
-
-                  // only allow the maxballoons to be added, not more if they shoot more
+                  Score.totalPops -= difference;
                   popsThisLevel = maxBalloons;
-                   Score.popsLastLevel = maxBalloons;
-
-                  // Score.totalPops = Score.totalPops + maxBalloons;
-             
-                  // Debug.Log("Got them all");
-                  Score.myLevels++; // count the level as completed
-                  // Score.popsLastLevel = popsThisLevel;
-            
-            
-
-
-
-                  // myAnimator.playIntersceneOver();
-                  // myAnimator.Play("")
-
+                  Score.popsLastLevel = maxBalloons;
+                  Score.myLevels++; 
                   playOutroAnim();
 
-            }else{
-
-                  //     Debug.Log("++++++++++++++++  Score.totalPops++ called");
-                  // Score.totalPops++;
             }
-            
       }
 
 
@@ -153,8 +101,5 @@ public class DisplayText : MonoBehaviour
       {
             myAnimator.SetTrigger("playIntersceneFadeIn");
       }
-
-
-
 
 }

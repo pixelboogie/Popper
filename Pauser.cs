@@ -13,20 +13,15 @@ public class Pauser : MonoBehaviour
       private bool lostVRFocus = false;
 
 
-      // GameObject referenceObject2;
-      // PauseMenu referenceScript2;
-
-      // Start is called before the first frame update
       void Start()
       {
             referenceObject = GameObject.FindWithTag("Soundtrack");
             referenceScript = referenceObject.GetComponent<SoundTrack>();
 
-            // referenceObject2 = GameObject.FindWithTag("PauseMenu");
-            // referenceScript2 = referenceObject2.GetComponent<PauseMenu>();
+            
       }
 
-      // Update is called once per frame
+
       void Update()
       {
 
@@ -52,7 +47,7 @@ public class Pauser : MonoBehaviour
             }
             else
             {
-                  //  lostVRFocus = false;
+                
                   resumeIt();
             }
       }
@@ -60,15 +55,6 @@ public class Pauser : MonoBehaviour
       void pauseIt()
       {
 
-            // Debug.Log("----------------- stop it");
-
-            // pauseMenuUI.SetActive(true);
-            // lostVRFocus = true;
-
-
-            // referenceObject = GameObject.FindWithTag("ObjectOne");
-            // referenceScript = referenceObject.GetComponent<Gun>();
-            // referenceScript.SetActive(true);
             if (GameVariables.musicOn)
             {
                   referenceScript.PauseMusic();
@@ -81,9 +67,9 @@ public class Pauser : MonoBehaviour
 
             if(lostVRFocus){
 
-            // Debug.Log("----------------- play it");
+     
             waitTime = 5f;
-            // pauseMenuUI.SetActive(false);
+    
             lostVRFocus = false;
 
             if (GameVariables.musicOn)
@@ -94,9 +80,7 @@ public class Pauser : MonoBehaviour
             if(PauseMenu.gameIsPaused == false){
             Time.timeScale = 1f;
             }
-            // referenceObject = GameObject.FindWithTag("ObjectOne");
-            // referenceScript = referenceObject.GetComponent<Gun>();
-            // referenceScript.SetActive(false);
+
             }
       }
 }
