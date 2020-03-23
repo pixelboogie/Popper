@@ -32,10 +32,14 @@ public class DartGun : MonoBehaviour
       
 //       private Material m_Material;
 
+
+      Color offWhite;
+
       private void Start()
       {
             // ref this so we can change color when low ammo
             referenceObject = GameObject.FindWithTag("ammoText");
+                ColorUtility.TryParseHtmlString("#D1D1D1", out offWhite);
       }
       void Update()
       {
@@ -134,7 +138,7 @@ public class DartGun : MonoBehaviour
             {
                   referenceObject.GetComponent<TextMeshPro>().color = Color.red;
             }else{
-                   referenceObject.GetComponent<TextMeshPro>().color = Color.white;
+                   referenceObject.GetComponent<TextMeshPro>().color = offWhite;
             }
 
 

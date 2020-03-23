@@ -27,10 +27,18 @@ public class Blaster : MonoBehaviour
       public AudioClip reloadSound;
       GameObject referenceObject;
 
+
+
+      Color offWhite;
+
+
       private void Start()
       {
             // ref this so we can change color when low ammo
             referenceObject = GameObject.FindWithTag("ammoText");
+
+                  ColorUtility.TryParseHtmlString("#D1D1D1", out offWhite);
+
       }
 
 
@@ -125,7 +133,7 @@ public class Blaster : MonoBehaviour
             {
                   referenceObject.GetComponent<TextMeshPro>().color = Color.red;
             }else{
-                   referenceObject.GetComponent<TextMeshPro>().color = Color.white;
+                   referenceObject.GetComponent<TextMeshPro>().color = offWhite;
             }
             
             ammoText.text = loadedRounds.ToString();

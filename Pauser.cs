@@ -10,14 +10,20 @@ public class Pauser : MonoBehaviour
 
       private float waitTime = 5f;
 
-      private bool gameIsPaused = false;
+      private bool lostVRFocus = false;
 
+
+      // GameObject referenceObject2;
+      // PauseMenu referenceScript2;
 
       // Start is called before the first frame update
       void Start()
       {
             referenceObject = GameObject.FindWithTag("Soundtrack");
             referenceScript = referenceObject.GetComponent<SoundTrack>();
+
+            // referenceObject2 = GameObject.FindWithTag("PauseMenu");
+            // referenceScript2 = referenceObject2.GetComponent<PauseMenu>();
       }
 
       // Update is called once per frame
@@ -40,13 +46,13 @@ public class Pauser : MonoBehaviour
       {
             if (OVRManager.hasVrFocus == false)
             {
-                  gameIsPaused = true;
+                  lostVRFocus = true;
                   pauseIt();
 
             }
             else
             {
-                  //  gameIsPaused = false;
+                  //  lostVRFocus = false;
                   resumeIt();
             }
       }
@@ -57,7 +63,7 @@ public class Pauser : MonoBehaviour
             // Debug.Log("----------------- stop it");
 
             // pauseMenuUI.SetActive(true);
-            // gameIsPaused = true;
+            // lostVRFocus = true;
 
 
             // referenceObject = GameObject.FindWithTag("ObjectOne");
@@ -73,18 +79,21 @@ public class Pauser : MonoBehaviour
       void resumeIt()
       {
 
-            if(gameIsPaused){
+            if(lostVRFocus){
 
             // Debug.Log("----------------- play it");
             waitTime = 5f;
             // pauseMenuUI.SetActive(false);
-            gameIsPaused = false;
+            lostVRFocus = false;
 
             if (GameVariables.musicOn)
             {
             referenceScript.UnPauseMusic();
             }
+
+            if(PauseMenu.gameIsPaused == false){
             Time.timeScale = 1f;
+            }
             // referenceObject = GameObject.FindWithTag("ObjectOne");
             // referenceScript = referenceObject.GetComponent<Gun>();
             // referenceScript.SetActive(false);
