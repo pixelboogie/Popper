@@ -17,7 +17,7 @@ public class Buckshot : MonoBehaviour
 
           startPosition =  transform.position;
       //   scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
-        scaleChange = new Vector3(1.0f, 1.0f, 1.0f);
+        scaleChange = new Vector3(1.7f, 1.7f, 0.0f);
     }
 
     // Update is called once per frame

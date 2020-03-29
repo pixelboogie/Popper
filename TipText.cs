@@ -28,7 +28,7 @@ public class TipText : MonoBehaviour
             Tips[4] = "Shoot down a HOT AIR BALLOON to undo a bummer.";
             Tips[5] = "Completing levels increases your score. BUMMERS reduce your score.";
             Tips[6] = "Complete more levels to earn new weapons.";
-            Tips[7] = "Complete all level to become a POP STAR.";
+            Tips[7] = "Complete all level to become a POP SHOT.";
 
             myTipNum = UnityEngine.Random.Range(1, 8);
 
